@@ -6,7 +6,6 @@ import Secondbar from "./ui/components/Secondbar";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Carruselitem from "./ui/components/Carruselitem";
-import SquishyCard from "./ui/components/SquishyCard";
 
 function App() {
   const responsive = {
@@ -36,13 +35,28 @@ function App() {
       <Secondbar />
       <div className="carrusel">
         <Carousel responsive={responsive}>
-          <Carruselitem imagen={juego} />
-          <Carruselitem imagen={juego} />
-          <Carruselitem imagen={juego} />
-          <Carruselitem imagen={juego} />
+          <Carruselitem
+            imagen={juego}
+            descrip="Juego chulo"
+            nombre="Solitario"
+          />
+          <Carruselitem
+            imagen={juego}
+            descrip="Juego chulo"
+            nombre="Solitario"
+          />
+          <Carruselitem
+            imagen={juego}
+            descrip="Juego chulo"
+            nombre="Solitario"
+          />
+          <Carruselitem
+            imagen={juego}
+            descrip="Juego chulo"
+            nombre="Solitario"
+          />
         </Carousel>
       </div>
-      <SquishyCard />
     </div>
   );
 }
