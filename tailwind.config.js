@@ -6,6 +6,7 @@ export default {
       leaderboard: "#1C2223",
       white: "#FFFFFF",
       background: "#1E1E1EE5",
+      navground: "#1C2223",
     },
   },
   plugins: [],

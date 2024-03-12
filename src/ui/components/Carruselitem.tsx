@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 function Carruselitem(props: Props) {
   let imagen = props.imagen;
@@ -58,7 +59,7 @@ const Card = (props: Props) => {
 
       <div className="absolute inset-0 z-10 bg-black opacity-50"></div>
 
-      <div className="relative z-10 text-white">
+      <div className="relative z-10 text-background">
         <span className="mb-3 block w-fit rounded-full bg-white/30 px-3 py-0.5 text-sm font-light text-white">
           New
         </span>
@@ -80,7 +81,9 @@ const Card = (props: Props) => {
         <p>{descrip}</p>
       </div>
       <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
-        Jugar
+        <Link to="/game" className="block w-full text-background h-full">
+          Jugar
+        </Link>
       </button>
     </motion.div>
   );

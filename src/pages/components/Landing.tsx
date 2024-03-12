@@ -28,7 +28,7 @@ function Landing() {
     },
   };
   return (
-    <div>
+    <div className="background bg-background">
       <SidebarWithBurgerMenu />
       <img className="banner" src={banner} />
       <Secondbar />
