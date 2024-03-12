@@ -104,3 +104,17 @@ a{
   width: 75%;
   margin: auto;
 }
+
+/* Asegúrate de incluir estas reglas en tus estilos globales o en un archivo CSS que se importe en tu componente */
+
+/* Contenedor del menú desplegable con posición relativa */
+.flex.items-center.md\:order-2.space-x-3.md\:space-x-0.rtl\:space-x-reverse {
+  position: relative; /* Nuevo */
+}
+
+/* Menú desplegable con posición absoluta */
+#user-dropdown {
+  position: absolute; /* Nuevo */
+  top: 100%; /* Nuevo: Ajusta según sea necesario */
+  right: 0; /* Nuevo: Ajusta según sea necesario */
+}
