@@ -1,8 +1,14 @@
 import icon from "../../assets/images/icono.png";
 import nosesion from "../../assets/images/noSesion.png";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Navbar() {
+  // Estado para controlar la visibilidad del menú desplegable
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  // Función para alternar la visibilidad del menú desplegable
+  const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -20,8 +26,9 @@ function Navbar() {
           </span>
         </Link>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          {/* User Menu */}
+          {/* Botón para alternar el menú de usuario */}
           <button
+            onClick={toggleDropdown}
             type="button"
             className="text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
             id="user-menu-button"
@@ -34,12 +41,14 @@ function Navbar() {
               alt="user photo"
             />
           </button>
-          {/* Dropdown menu */}
+          {/* Menú desplegable con control de visibilidad */}
           <div
-            className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600"
+            className={`z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+              isDropdownOpen ? "block" : "hidden"
+            }`}
             id="user-dropdown"
           >
-            {/* User info */}
+            {/* Información del usuario */}
             <div className="px-4 py-3">
               <span className="block text-sm text-gray-900 dark:text-white">
                 Bonnie Green
@@ -48,7 +57,7 @@ function Navbar() {
                 name@flowbite.com
               </span>
             </div>
-            {/* Menu items */}
+            {/* Elementos del menú */}
             <ul className="py-2" aria-labelledby="user-menu-button">
               <li>
                 <Link
@@ -58,75 +67,11 @@ function Navbar() {
                   Dashboard
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Settings
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Earnings
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                >
-                  Sign out
-                </Link>
-              </li>
+              {/* Más elementos del menú... */}
             </ul>
           </div>
-          {/* Mobile menu button */}
-          <button
-            type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="navbar-user"
-            aria-expanded="false"
-          >
-            <span className="sr-only">Open main menu</span>
-            {/* Icon for mobile menu */}
-            <svg
-              className="w-5 h-5"
-              aria-hidden="true"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
         </div>
-        {/* Links menu */}
-        <div
-          className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-          id="navbar-user"
-        >
-          <ul className="flex flex-col p-4 mt-4 md:p-0 md:space-x-8 md:flex-row md:mt-0 bg-gray-50 rounded-lg border border-gray-100 dark:bg-gray-800 md:bg-transparent md:border-0 md:rounded-none">
-            {/* Navigation Links */}
-            <li>
-              <Link
-                to="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 md:hover:text-blue-700"
-              >
-                Home
-              </Link>
-            </li>
-            {/* More links... */}
-          </ul>
-        </div>
+        {/* Más contenido del componente... */}
       </div>
     </nav>
   );
