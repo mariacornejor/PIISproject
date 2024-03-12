@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import banner from "../../assets/images/banner.png";
 import juego from "../../assets/images/juego.png";
 import "react-multi-carousel/lib/styles.css";
+import { SidebarWithBurgerMenu } from "../../ui/components/NavBarLateral";
 
 function Landing() {
   const responsive = {
@@ -28,7 +29,7 @@ function Landing() {
   };
   return (
     <div>
-      <Navbar />
+      <SidebarWithBurgerMenu />
       <img className="banner" src={banner} />
       <Secondbar />
       <div className="carrusel">

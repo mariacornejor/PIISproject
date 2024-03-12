@@ -2,6 +2,7 @@ import icon from "../../assets/images/icono.png";
 import nosesion from "../../assets/images/noSesion.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { SidebarWithBurgerMenu } from "./NavBarLateral";
 
 function Navbar() {
   // Estado para controlar la visibilidad del menú desplegable
@@ -11,6 +12,7 @@ function Navbar() {
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
   return (
     <nav className="bg-gray-900 border-gray-200">
+      <SidebarWithBurgerMenu />
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link
           to="/"
