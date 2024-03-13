@@ -31,7 +31,7 @@ function Navbar() {
   ];
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between bg-navground items-center p-4 shadow-sm">
+    <div className=" mx-auto flex justify-between bg-navground items-center p-4 shadow-sm">
       {/* Left side */}
       <div className="flex items-center">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
@@ -54,7 +54,7 @@ function Navbar() {
         <input
           className="bg-navground p-2 w-full focus:outline-none  text-white"
           type="text"
-          placeholder="Search foods"
+          placeholder="Buscar"
         />
       </div>
       {/* Mobile Menu */}
