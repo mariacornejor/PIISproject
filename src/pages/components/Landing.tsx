@@ -29,7 +29,7 @@ function Landing() {
     <div className="background bg-background">
       <Navbar />
       <img className="banner" src={banner} />
-      <h1>Nuevos</h1>
+
       <div className="carrusel">
         <Carousel responsive={responsive}>
           <Carruselitem
