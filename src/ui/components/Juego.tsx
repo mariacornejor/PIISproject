@@ -4,6 +4,7 @@ import damas from "../../assets/images/damas.png";
 import parchis from "../../assets/images/parchis.png";
 import ajedrez from "../../assets/images/ajedrez.png";
 import Rating from "../../ui/components/Rating.tsx";
+import Chat from "../../ui/components/Chat.tsx";
 
 function Juego() {
   const [showChat, setShowChat] = useState(false);
@@ -180,7 +181,7 @@ function Juego() {
       <div className="mx-auto px-5 py-8 flex">
         {/* Componente de Juegos Similares - Ocupando 2/3 del espacio */}
         <div className="w-2/3 text-white">
-          <div className="text-left mb-5">
+          <div className="text-left mb-5 ml-4">
             <span className="text-white font-bold underline">
               Similares a este juego
             </span>
@@ -246,7 +247,7 @@ function Juego() {
         {/* Sección de Noticias - Ocupando 1/3 del espacio restante */}
         <div className="w-1/3 px-4 pl-10 ">
           <div className="text-left mb-5">
-            <span className="text-white font-bold underline">Noticias</span>
+            <span className="text-white font-bold underline">Descripción</span>
           </div>
           {/* Contenido de Noticias aquí */}
           <div className="bg-navground p-4 text-white">
@@ -267,21 +268,7 @@ function Juego() {
       </div>
 
       {/* Icono de Chat en la parte inferior derecha */}
-      <button
-        onClick={toggleChat}
-        className="fixed bottom-8 right-8 p-3 rounded-full text-white hover:bg-black hover:bg-opacity-50 transition ease-in-out duration-200"
-        style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }} // Negro con 10% de opacidad
-      >
-        <BsChatDots size="24" />
-      </button>
-
-      {/* Chat (Simulado) */}
-      {showChat && (
-        <div className="fixed bottom-20 right-8 bg-white p-4 rounded-lg shadow-lg w-64">
-          <p>¡Hola! ¿Cómo podemos ayudarte?</p>
-          {/* Contenido del chat */}
-        </div>
-      )}
+      <Chat />
     </section>
   );
 }
