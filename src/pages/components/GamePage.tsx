@@ -1,5 +1,5 @@
-import Juego from "../ui/components/Juego";
-import Navbar from "../ui/components/Navbar";
+import Juego from "../../ui/components/Juego";
+import Navbar from "../../ui/components/Navbar";
 
 function GamePage() {
   return (

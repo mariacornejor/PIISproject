@@ -1,27 +1,43 @@
-import { BsArrowsFullscreen } from "react-icons/bs";
+import React, { useState } from "react";
+import { BsArrowsFullscreen, BsChatDots } from "react-icons/bs";
+import damas from "../../assets/images/damas.png";
+import parchis from "../../assets/images/parchis.png";
+import ajedrez from "../../assets/images/ajedrez.png";
+import Rating from "../../ui/components/Rating.tsx";
 
 function Juego() {
+  const [showChat, setShowChat] = useState(false);
+
+  const toggleChat = () => setShowChat(!showChat);
+
   return (
-    <section className="bg-background  body-font relative">
+    <section className="bg-background body-font relative">
       <div className="container px-5 py-16 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="py-5 lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
+          {/* Div modificado para el texto con z-index */}
+          <div className="absolute top-0 left-0 right-0 text-left pt-2 z-sm:flex-nowrap flex-wrap10">
+            <span className="text-white font-bold underline">
+              Nombre del juego
+            </span>
+          </div>
           <iframe
             width="100%"
             height="100%"
-            className="absolute inset-0"
+            className="absolute inset-0 mt-10"
             title="map"
             src="http://185.236.248.96:3000/"
+            style={{ zIndex: 1 }} // Asegurando que el iframe tenga un z-index menor
           ></iframe>
-          <div className="bg-white relative flex flex-wrap py-6 rounded shadow-md">
+          <div className=" relative flex flex-wrap py-6 rounded shadow-md">
             <div className="lg:w-1/2 px-6 mt-4 lg:mt-0">
               <div
                 style={{
-                  backgroundColor: "#1c1c1c", // Corregido: Valor entrecomillado
+                  backgroundColor: "#1c1c1c",
                 }}
               >
                 <BsArrowsFullscreen
                   style={{
-                    color: "#ffffff", // Corregido: Valor entrecomillado
+                    color: "#1E1E1EE5",
                   }}
                 />
               </div>
@@ -45,29 +61,10 @@ function Juego() {
               <div className="flow-root">
                 <ul role="list" className="divide-y divide-gray-200">
                   <li className="py-3 sm:py-4">
-                    <div className="flex items-center space-x-4">
-                      <div className="flex-shrink-0">
-                        <img
-                          className="w-8 h-8 rounded-full"
-                          src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                          alt="Neil image"
-                        />
+                    <div className="flex items-center space-x-4 ">
+                      <div className="text-white flex-shrink-0">
+                        <p>1</p>
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-white truncate">
-                          Neil Sims
-                        </p>
-                        <p className="text-sm text-white truncate ">
-                          email@windster.com
-                        </p>
-                      </div>
-                      <div className="inline-flex items-center text-white font-semibold">
-                        $320
-                      </div>
-                    </div>
-                  </li>
-                  <li className="py-3 sm:py-4">
-                    <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
                         <img
                           className="w-8 h-8 rounded-full"
@@ -77,19 +74,41 @@ function Juego() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-white truncate ">
-                          Bonnie Green
-                        </p>
-                        <p className="text-sm text-white truncate ">
-                          email@windster.com
+                          dragon10
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-white ">
-                        $3467
+                        3467px
                       </div>
                     </div>
                   </li>
                   <li className="py-3 sm:py-4">
                     <div className="flex items-center space-x-4">
+                      <div className="text-white flex-shrink-0">
+                        <p>2</p>
+                      </div>
+                      <div className="flex-shrink-0">
+                        <img
+                          className="w-8 h-8 rounded-full"
+                          src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                          alt="Neil image"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-white truncate">
+                          elpistolas
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center text-white font-semibold">
+                        2367px
+                      </div>
+                    </div>
+                  </li>
+                  <li className="py-3 sm:py-4">
+                    <div className="flex items-center space-x-4">
+                      <div className="text-white flex-shrink-0">
+                        <p>3</p>
+                      </div>
                       <div className="flex-shrink-0">
                         <img
                           className="w-8 h-8 rounded-full"
@@ -99,19 +118,19 @@ function Juego() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-white truncate">
-                          Michael Gough
-                        </p>
-                        <p className="text-sm text-white truncate">
-                          email@windster.com
+                          elmakina51
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-white">
-                        $67
+                        367px
                       </div>
                     </div>
                   </li>
                   <li className="py-3 sm:py-4">
                     <div className="flex items-center space-x-4">
+                      <div className="text-white flex-shrink-0">
+                        <p>4</p>
+                      </div>
                       <div className="flex-shrink-0">
                         <img
                           className="w-8 h-8 rounded-full"
@@ -121,19 +140,19 @@ function Juego() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-white truncate ">
-                          Lana Byrd
-                        </p>
-                        <p className="text-sm text-white truncate">
-                          email@windster.com
+                          killer77
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-white">
-                        $367
+                        59px
                       </div>
                     </div>
                   </li>
                   <li className="pt-3 pb-0 sm:pt-4">
                     <div className="flex items-center space-x-4">
+                      <div className="text-white flex-shrink-0">
+                        <p>5</p>
+                      </div>
                       <div className="flex-shrink-0">
                         <img
                           className="w-8 h-8 rounded-full"
@@ -143,14 +162,11 @@ function Juego() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-white truncate ">
-                          Thomes Lean
-                        </p>
-                        <p className="text-sm text-white truncate">
-                          email@windster.com
+                          camper
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-white ">
-                        $2367
+                        <p>12px</p>
                       </div>
                     </div>
                   </li>
@@ -160,6 +176,112 @@ function Juego() {
           </div>
         </div>
       </div>
+      {/* Componente Principal */}
+      <div className="mx-auto px-5 py-8 flex">
+        {/* Componente de Juegos Similares - Ocupando 2/3 del espacio */}
+        <div className="w-2/3 text-white">
+          <div className="text-left mb-5">
+            <span className="text-white font-bold underline">
+              Similares a este juego
+            </span>
+          </div>
+          <div className="flex flex-wrap -m-4">
+            {/* Juego Similar 1 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={damas} alt="Damas" />
+                <div className="text-center p-4">
+                  <p>DAMAS</p>
+                </div>
+              </div>
+            </div>
+            {/* Juego Similar 2 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={parchis} alt="Parchis" />
+                <div className="text-center p-4">
+                  <p>PARCHIS</p>
+                </div>
+              </div>
+            </div>
+            {/* Juego Similar 3 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={ajedrez} alt="Parchis" />
+                <div className="text-center p-4">
+                  <p>AJEDREZ</p>
+                </div>
+              </div>
+            </div>
+            {/* Juego Similar 4 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={ajedrez} alt="Parchis" />
+                <div className="text-center p-4">
+                  <p>AJEDREZ</p>
+                </div>
+              </div>
+            </div>
+            {/* Juego Similar 5 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={damas} alt="Parchis" />
+                <div className="text-center p-4">
+                  <p>DAMAS</p>
+                </div>
+              </div>
+            </div>
+            {/* Juego Similar 6 */}
+            <div className="p-4 w-full sm:w-1/2 md:w-1/3">
+              <div className="flex flex-col items-center">
+                <img className="w-72 h-72" src={parchis} alt="Parchis" />
+                <div className="text-center p-4">
+                  <p>PARCHIS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Sección de Noticias - Ocupando 1/3 del espacio restante */}
+        <div className="w-1/3 px-4 pl-10 ">
+          <div className="text-left mb-5">
+            <span className="text-white font-bold underline">Noticias</span>
+          </div>
+          {/* Contenido de Noticias aquí */}
+          <div className="bg-navground p-4 text-white">
+            <p>
+              Sumérgete en la emoción del póker con "Póker Estelar", donde las
+              cartas se reparten y el juego se eleva en un emocionante viaje
+              hacia la victoria. Experimenta la auténtica sensación de jugar al
+              póker desde la comodidad de tu pantalla.
+            </p>
+            <br></br>
+            <div className="flex flex-wrap space-x-2">
+              <p>Valoración del juego: </p>
+              <Rating />
+            </div>
+            <p>Fecha de lanzamiento: 19/09/2018</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Icono de Chat en la parte inferior derecha */}
+      <button
+        onClick={toggleChat}
+        className="fixed bottom-8 right-8 p-3 rounded-full text-white hover:bg-black hover:bg-opacity-50 transition ease-in-out duration-200"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }} // Negro con 10% de opacidad
+      >
+        <BsChatDots size="24" />
+      </button>
+
+      {/* Chat (Simulado) */}
+      {showChat && (
+        <div className="fixed bottom-20 right-8 bg-white p-4 rounded-lg shadow-lg w-64">
+          <p>¡Hola! ¿Cómo podemos ayudarte?</p>
+          {/* Contenido del chat */}
+        </div>
+      )}
     </section>
   );
 }

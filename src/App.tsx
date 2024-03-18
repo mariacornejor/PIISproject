@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Landing from "./pages/components/Landing";
-import GamePage from "./pages/GamePage";
+import GamePage from "./pages/components/GamePage";
 import Profile from "./pages/components/Profile";
 
 function App() {
