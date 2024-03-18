@@ -4,6 +4,8 @@ import Carousel from "react-multi-carousel";
 import banner from "../../assets/images/banner.png";
 import juego from "../../assets/images/juego.png";
 import "react-multi-carousel/lib/styles.css";
+import Secondbar from "../../ui/components/Secondbar";
+
 
 function Landing() {
   const responsive = {
@@ -29,7 +31,7 @@ function Landing() {
     <div className="background bg-background">
       <Navbar />
       <img className="banner" src={banner} />
-
+      <Secondbar />
       <div className="carrusel">
         <Carousel responsive={responsive}>
           <Carruselitem

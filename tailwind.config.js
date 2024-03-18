@@ -7,6 +7,7 @@ export default {
       white: "#FFFFFF",
       background: "#1E1E1EE5",
       navground: "#1C2223",
+      cardbg: "#F3EFEF3D",
     },
   },
   plugins: [],
