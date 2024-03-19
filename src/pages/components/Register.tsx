@@ -1,74 +1,84 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import icon from "../../assets/images/icono.png";
-import nosesion from "../../assets/images/noSesion.png";
-import { VscCircleLarge } from "react-icons/vsc";
-
-function Navbar() {
-  // Lógica del Navbar aquí
-}
 
 function Register() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    setUsername('');
-    setEmail('');
-    setPassword('');
-  };
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log('Username:', username);
+        console.log('Email:', email);
+        console.log('Password:', password);
+        setUsername('');
+        setEmail('');
+        setPassword('');
+    };
 
-  return (
-    <div className="background bg-background h-screen flex flex-col justify-between">
-      <Link to="/">
-        <img src={icon} className="h-12 mx-4 mt-4" alt="Flowbite Logo" />
-      </Link>
+    return (
+        <div style={{ backgroundColor: '#121212', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Link to="/" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem' }}>
+                <img src={icon} style={{ width: '100px', height: '90px' }} alt="Icono" />
+            </Link>
 
-      {/* Formulario de registro */}
-      <div className="mx-auto my-auto">
-        <h2 className="text-white text-3xl mb-4">Registro</h2>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <div>
-            <label htmlFor="username" className="text-white">Nombre de usuario:</label>
-            <input
-              type="text"
-              id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="bg-navground p-2 text-white"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="text-white">Correo electrónico:</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-navground p-2 text-white"
-            />
-          </div>
-          <div>
-            <label htmlFor="password" className="text-white">Contraseña:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="bg-navground p-2 text-white"
-            />
-          </div>
-          <button type="submit" className="bg-gray-800 rounded-full py-2 px-4 text-white">Registrarse</button>
-        </form>
-      </div>
+            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '1rem', fontFamily: 'Montserrat', fontWeight: 'bold' }}>Registrar nuevo usuario</h2>
+            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '500px', textAlign: 'center'}}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'Montserrat'}}>
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Nombre de usuario"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
+                    />
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Correo electrónico"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
+                    />
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Contraseña"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
+                    />
+                </form>
+            </div>
+            
+            <Link to="/inicio" style={{ maxWidth: '500px', alignSelf: 'center', cursor: 'pointer', textDecoration: 'none', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ marginTop: '1rem' }}>
+        <button
+            type="submit"
+            style={{
+                width: '200%', // Cambia el ancho del botón según tus necesidades
+                margin: 'auto', // Centra el botón horizontalmente
+                padding: '1rem',
+                backgroundColor: '#E50914',
+                color: 'white',
+                borderRadius: '15px',
+                cursor: 'pointer',
+                fontFamily: 'Montserrat',
+                fontSize: '1rem',
+                fontWeight: 'bold'
+            }}
+        >
+            Crear Cuenta
+        </button>
     </div>
-  );
+</Link>
+
+
+
+        </div> 
+    );
 }
 
 export default Register;
