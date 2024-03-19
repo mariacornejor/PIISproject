@@ -4,12 +4,40 @@ import React from "react";
 import { Link } from "react-router-dom";
 import icon from "../../assets/images/icono.png";
 import { VscCircleLarge } from "react-icons/vsc";
+import { useState, useEffect } from "react";
 
-function Navbar() {
+type Props = {
+  point?: number;
+};
+
+function Navbar(props: Props) {
+  const point = props.point !== undefined ? props.point : 200;
+  const [isSticky, setIsSticky] = React.useState(false);
+  const [transitionClass, setTransitionClass] =
+    React.useState("transition-none");
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Define a partir de qué punto quieres que la barra se vuelva fija
+      const sticky = point; // Cambia este valor según tus necesidades
+
+      if (window.scrollY >= sticky) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Función para alternar la visibilidad del menú desplegable
   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
@@ -31,7 +59,11 @@ function Navbar() {
   ];
 
   return (
-    <div className=" mx-auto flex justify-between bg-navground items-center p-4 shadow-sm">
+    <div
+      className={`w-full ${
+        isSticky ? "fixed top-0 z-50" : "relative"
+      } transition-opacity duration-500  shadow-md mx-auto flex justify-between bg-navground items-center p-4 `}
+    >
       {/* Left side */}
       <div className="flex items-center">
         <div onClick={() => setNav(!nav)} className="cursor-pointer">
