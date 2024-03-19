@@ -12,7 +12,7 @@ function BarraNivel({ nivel, porcentaje }: Props) {
       </div>
       <div className="w-full bg-grey rounded-full h-2.5">
         <div
-          className="bg-gradient-to-r from-green to-blue h-2.5 rounded-full"
+          className="bg-gradient-to-r from-red to-light_red h-2.5 rounded-full"
           style={{ width: `${porcentaje}%` }}
         ></div>
       </div>
