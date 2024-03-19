@@ -8,6 +8,7 @@ import Noticias from "./pages/components/NewsPage";
 import Register from "./pages/components/Register";
 import MasValorados from "./pages/components/MasValorados";
 import Nuevos from "./pages/components/Nuevos";
+import Login from "./pages/components/Login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/mejorValorados" element={<MasValorados />} />
         <Route path="/nuevos" element={<Nuevos />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
