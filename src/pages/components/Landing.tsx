@@ -9,6 +9,7 @@ import poker from "../../assets/images/poker.png";
 import smalland from "../../assets/images/smalland.png";
 import ninja from "../../assets/images/100Ninja.png";
 import JuegosVarios from "../../ui/components/JuegosVarios";
+import BarraNivel from "../../ui/components/BarraNivel";
 
 function Landing() {
   const responsive = {
@@ -35,7 +36,7 @@ function Landing() {
       <Navbar />
       <img className="banner" src={banner} />
       <Secondbar />
-
+      <BarraNivel nivel={12} porcentaje={76}></BarraNivel>
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
           Destacados
