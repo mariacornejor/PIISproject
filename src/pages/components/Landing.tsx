@@ -36,7 +36,7 @@ function Landing() {
       <Navbar />
       <img className="banner" src={banner} />
       <Secondbar />
-      <BarraNivel nivel={12} porcentaje={76}></BarraNivel>
+
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
           Destacados
