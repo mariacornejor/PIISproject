@@ -9,7 +9,6 @@ import poker from "../../assets/images/poker.png";
 import smalland from "../../assets/images/smalland.png";
 import ninja from "../../assets/images/100Ninja.png";
 import JuegosVarios from "../../ui/components/JuegosVarios";
-import BarraNivel from "../../ui/components/BarraNivel";
 
 function Landing() {
   const responsive = {
