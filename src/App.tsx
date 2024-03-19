@@ -7,6 +7,7 @@ import Profile from "./pages/components/Profile";
 import Noticias from "./pages/components/NewsPage";
 import Register from "./pages/components/Register";
 import MasValorados from "./pages/components/MasValorados";
+import Nuevos from "./pages/components/Nuevos";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/news" element={<Noticias />} />
         <Route path="/register" element={<Register />} />
         <Route path="/mejorValorados" element={<MasValorados />} />
+        <Route path="/nuevos" element={<Nuevos />} />
       </Routes>
     </Router>
   );

@@ -5,12 +5,12 @@ import banner from "../../assets/images/banner.png";
 import juego from "../../assets/images/juego.png";
 import "react-multi-carousel/lib/styles.css";
 import Secondbar from "../../ui/components/Secondbar";
-import poker from "../../assets/images/poker.png";
-import smalland from "../../assets/images/smalland.png";
-import ninja from "../../assets/images/100Ninja.png";
+import supermario from "../../assets/images/supermario.png";
+import uno from "../../assets/images/uno.png";
+import gamersarena from "../../assets/images/gamersarena.png";
 import JuegosVarios from "../../ui/components/JuegosVarios";
 
-function Landing() {
+function Nuevos() {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -38,28 +38,29 @@ function Landing() {
 
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
-          Destacados
+          Novedades
         </span>
         <Carousel responsive={responsive}>
           <Carruselitem
-            imagen={poker}
-            descrip="No se aceta dinero real... todavia"
-            nombre="Poker"
-          />
-          <Carruselitem
-            imagen={smalland}
-            descrip="no hay gran poblema que un pequeño no pueda resolver"
-            nombre="SmalLand"
-          />
-          <Carruselitem
-            imagen={ninja}
-            descrip="Hazte con todos"
-            nombre="100 ninja"
+            imagen={supermario}
+            descrip="Juego de plataformas, rescata a la princesa"
+            nombre="Super Mario"
           />
           <Carruselitem
             imagen={juego}
             descrip="Juego chulo"
             nombre="Solitario"
+          />
+          <Carruselitem
+            imagen={uno}
+            descrip="Rompe amistades, gana enemigos, ahora solo quedas tu"
+            nombre="UNO"
+          />
+
+          <Carruselitem
+            imagen={gamersarena}
+            descrip="Lucha... ¡Por tu honor!"
+            nombre="Battle for Honor"
           />
         </Carousel>
       </div>
@@ -68,4 +69,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default Nuevos;

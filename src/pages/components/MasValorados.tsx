@@ -8,6 +8,7 @@ import Secondbar from "../../ui/components/Secondbar";
 import supermario from "../../assets/images/supermario.png";
 import uno from "../../assets/images/uno.png";
 import gamersarena from "../../assets/images/gamersarena.png";
+import JuegosVarios from "../../ui/components/JuegosVarios";
 
 function MasValorados() {
   const responsive = {
@@ -35,18 +36,25 @@ function MasValorados() {
       <img className="banner" src={banner} />
       <Secondbar />
       <div className="carrusel">
+        <span className="ml-14 pt-10 text-white font-bold underline">
+          Mejor Valorados
+        </span>
         <Carousel responsive={responsive}>
           <Carruselitem
             imagen={supermario}
-            descrip="Juego chulo"
+            descrip="Juego de plataformas, rescata a la princesa"
             nombre="Super Mario"
           />
           <Carruselitem
             imagen={gamersarena}
-            descrip="Juego chulo"
+            descrip="Lucha... ¡Por tu honor!"
             nombre="Battle for Honor"
           />
-          <Carruselitem imagen={uno} descrip="Juego chulo" nombre="UNO" />
+          <Carruselitem
+            imagen={uno}
+            descrip="Rompe amistades, gana enemigos, ahora solo quedas tu"
+            nombre="UNO"
+          />
           <Carruselitem
             imagen={juego}
             descrip="Juego chulo"
@@ -54,6 +62,7 @@ function MasValorados() {
           />
         </Carousel>
       </div>
+      <JuegosVarios></JuegosVarios>
     </div>
   );
 }
