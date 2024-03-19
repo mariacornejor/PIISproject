@@ -10,7 +10,7 @@ export default {
       red: "#660000",
       light_red: "#e74236",
       grey: "#666666",
-      blue: "#8181e9",
+      blue: "#131319",
       cardbg: "#F3EFEF3D",
     },
   },

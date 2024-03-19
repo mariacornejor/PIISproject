@@ -102,6 +102,11 @@ function Profile() {
             nombre="peque peque"
             descripcion="pepe comio un caballo"
           ></Logrositem>
+          <Logrositem
+            src={fotoLogro1}
+            nombre="peque peque"
+            descripcion="pepe comio un caballo"
+          ></Logrositem>
         </div>
       </div>
     </div>
