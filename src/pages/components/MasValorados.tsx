@@ -5,6 +5,9 @@ import banner from "../../assets/images/banner.png";
 import juego from "../../assets/images/juego.png";
 import "react-multi-carousel/lib/styles.css";
 import Secondbar from "../../ui/components/Secondbar";
+import supermario from "../../assets/images/supermario.png";
+import uno from "../../assets/images/uno.png";
+import gamersarena from "../../assets/images/gamersarena.png";
 
 function MasValorados() {
   const responsive = {
@@ -34,20 +37,16 @@ function MasValorados() {
       <div className="carrusel">
         <Carousel responsive={responsive}>
           <Carruselitem
-            imagen={juego}
+            imagen={supermario}
             descrip="Juego chulo"
-            nombre="Solitario"
+            nombre="Super Mario"
           />
           <Carruselitem
-            imagen={juego}
+            imagen={gamersarena}
             descrip="Juego chulo"
-            nombre="Solitario"
+            nombre="Battle for Honor"
           />
-          <Carruselitem
-            imagen={juego}
-            descrip="Juego chulo"
-            nombre="Solitario"
-          />
+          <Carruselitem imagen={uno} descrip="Juego chulo" nombre="UNO" />
           <Carruselitem
             imagen={juego}
             descrip="Juego chulo"

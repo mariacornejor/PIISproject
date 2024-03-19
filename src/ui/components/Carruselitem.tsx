@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import "../css/Carruselitem.css";
 function Carruselitem(props: Props) {
   let imagen = props.imagen;
   let nombre = props.nombre;
@@ -74,11 +74,11 @@ const Card = (props: Props) => {
             duration: 1,
             ease: "backInOut",
           }}
-          className="my-2 block origin-top-left font-mono text-white text-6xl font-black leading-[1.2]"
+          className="my-2 block origin-top-left font-mono text-white text-6xl font-black leading-[1.2] "
         >
-          {nombre}
+          <p className="text-white border-black">{nombre}</p>
         </motion.span>
-        <p className="text-white">{descrip}</p>
+        <p className="text-white border-black">{descrip}</p>
       </div>
       <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
         <Link to="/game" className="block w-full text-background h-full">
