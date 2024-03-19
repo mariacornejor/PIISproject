@@ -5,7 +5,7 @@ type Props = {
 
 function BarraNivel({ nivel, porcentaje }: Props) {
   return (
-    <div className="bg-leaderboard text-white p-3 rounded-lg shadow-md">
+    <div className="bg-background text-white p-3 rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-1">
         <span className="text-sm font-medium">Nivel {nivel}</span>
         <span className="text-sm font-medium">{porcentaje}%</span>

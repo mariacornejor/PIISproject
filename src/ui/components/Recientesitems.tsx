@@ -21,7 +21,7 @@ function Recientesitems(props: Props) {
   // Asignar el nivel a una variable
   const nivel = obtenerNivel(props.puntos);
   return (
-    <div className="bg-leaderboard text-white p-3 rounded-lg shadow-md flex items-center space-x-4 m-4 max-w-96">
+    <div className="bg-blue text-white p-3 rounded-lg shadow-md flex items-center space-x-4 m-4 max-w-96">
       <img
         src={props.src}
         alt={props.nombre}
