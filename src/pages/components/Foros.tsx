@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../../ui/components/Navbar";
 import banner from "../../assets/images/banner.png";
 import Secondbar from "../../ui/components/Secondbar";
@@ -18,7 +17,7 @@ function Foros() {
      <img className="banner" src={banner} alt="Banner de la página de foros" />
      <div className="bg-background body-font relative justify-center">
        <Secondbar />
-       <div className="forum-container">
+       <div className="forum-container"> 
          <div className="forum">
            <div className="user-info">
              <img className="user-avatar" src={userAvatar1} alt="Avatar del usuario" />
@@ -28,7 +27,6 @@ function Foros() {
            <p className="message">¡Acabo de alcanzar el nivel 50 en el último juego de rol que he estado jugando! ¿Alguien más ha llegado tan lejos?</p>
          </div>
          <img className="forum-image" src={postImage1} alt="Imagen del foro" />
-         {/* Más comentarios con espacio adicional */}
          <div className="spacer"></div>
          <div className="forum">
            <div className="user-info">
@@ -39,7 +37,6 @@ function Foros() {
            <p className="message">He encontrado un bug en el último parche de actualización del juego de disparos. ¿Alguien más ha experimentado esto?</p>
          </div>
          <img className="forum-image" src={postImage3} alt="Imagen del foro" />
-         {/* Agregamos más comentarios al foro */}
          <div className="spacer"></div>
          <div className="forum">
            <div className="user-info">
@@ -58,7 +55,6 @@ function Foros() {
            </div>
            <p className="message">Recientemente descubrí un juego retro increíble. Es una joya oculta que merece más atención. ¡Deberías probarlo si te gustan los clásicos!</p>
          </div>
-         {/* Agregamos más comentarios al foro */}
          <div className="spacer"></div>
          <div className="forum">
            <div className="user-info">
