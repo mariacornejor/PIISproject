@@ -15,21 +15,22 @@ function Login() {
     };
 
     return (
-        <div style={{ backgroundColor: '#121212', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <Link to="/" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem' }}>
-                <img src={icon} style={{ width: '100px', height: '90px' }} alt="Icono" />
+        <div className="bg-[#121212] min-h-screen flex flex-col items-center justify-center">
+            <Link to="/" className="cursor-pointer mr-0">
+                <img src={icon} className="w-[100px] h-[90px] mb-6" alt="Icono" />
             </Link>
 
-            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '1rem', fontFamily: 'Montserrat', fontWeight: 'bold' }}>Inicia Sesion</h2>
-            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '500px', textAlign: 'center' }}>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'Montserrat' }}>
+            <h2 className="text-white text-2xl mb-4 font-bold font-['Montserrat']">Inicia Sesion</h2>
+
+            <div className="mt-4 w-full max-w-[500px] text-center">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <input
                         type="text"
                         id="username"
                         placeholder="Nombre de usuario"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
+                        className="w-full p-4 bg-[#333] border-none text-white rounded-[15px] font-['Montserrat']"
                     />
                     <input
                         type="password"
@@ -37,42 +38,36 @@ function Login() {
                         placeholder="Contraseña"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
+                        className="w-full p-4 bg-[#333] border-none text-white rounded-[15px] font-['Montserrat']"
                     />
                 </form>
             </div>
 
-            <Link to="/inicio" style={{ maxWidth: '500px', alignSelf: 'center', cursor: 'pointer', textDecoration: 'none', display: 'flex', justifyContent: 'center' }}>
-                <div style={{ marginTop: '1rem' }}>
+            <Link to="/inicio" className="max-w-[500px] cursor-pointer text-decoration-none flex mr-0 mt-4">
+                <div>
                     <button
                         type="submit"
-                        style={{
-                            width: '200%', // Cambia el ancho del botón según tus necesidades
-                            margin: 'auto', // Centra el botón horizontalmente
-                            padding: '1rem',
-                            backgroundColor: '#E50914',
-                            color: 'white',
-                            borderRadius: '15px',
-                            cursor: 'pointer',
-                            fontFamily: 'Montserrat',
-                            fontSize: '1rem',
-                            fontWeight: 'bold'
-                        }}
+                        className="w-full mt-1 p-4 bg-[#E50914] text-white rounded-[15px] cursor-pointer font-bold text-lg font-['Montserrat']"
                     >
-                        Iniciar Sesion
+                        Iniciar Sesión
                     </button>
                 </div>
-
+            </Link>
+            <Link to="/recuperarContrasena" className="text-white mt-4 hover:text-gray-400 font-['Montserrat'] mr-0">
+                Recuperar contraseña
             </Link>
 
-
-            <div className='flex bottom-[20px] right-[20px] relative'>
-                <button type="submit" className=' p-[1rem] bg-[#E50914] rounded-[15px] cursor-pointer font-bold text-[1rem] font-["Montserrat"] absolute'>
-                    Administrador
-                </button>
-                <button type="submit" className=' p-[1rem] bg-[#E50914] rounded-[15px] cursor-pointer font-bold text-[1rem] font-["Montserrat"] absolute'>
-                    Desarrollador
-                </button>
+            <div className="absolute bottom-0 right-0 mb-4 mr-4 flex space-x-2">
+                <Link to="/loginAdmin">
+                    <button type="button" className="p-4 bg-[#FF7979] rounded-[15px] cursor-pointer font-bold text-white text-lg font-['Montserrat']">
+                        Administrador
+                    </button>
+                </Link>
+                <Link to="/loginDev">
+                    <button type="button" className="p-4 bg-[#E50914] rounded-[15px] cursor-pointer font-bold text-white text-lg font-['Montserrat']">
+                        Desarrollador
+                    </button>
+                </Link>
             </div>
         </div>
 
