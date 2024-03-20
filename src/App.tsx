@@ -9,6 +9,7 @@ import Register from "./pages/components/Register";
 import MasValorados from "./pages/components/MasValorados";
 import Nuevos from "./pages/components/Nuevos";
 import Login from "./pages/components/Login";
+import Foros from "./pages/components/Foros";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/mejorValorados" element={<MasValorados />} />
         <Route path="/nuevos" element={<Nuevos />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/foros" element={<Foros />} />
       </Routes>
     </Router>
   );
