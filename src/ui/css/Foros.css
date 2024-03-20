@@ -1,0 +1,61 @@
+/* Estilos CSS mejorados para la pantalla de foros */
+.banner {
+    width: 100%;
+    max-height: 200px; /* Ajusta la altura según tus necesidades */
+    object-fit: cover;
+  }
+  
+  .bg-background {
+    background-color: #f2f2f2; /* Cambiamos el color de fondo a gris claro */
+  }
+  
+  .forum-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .forum {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    width: 65%;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+  .user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Hacemos que la foto de perfil sea redonda */
+    margin-right: 10px;
+  }
+  
+  .username {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .timestamp {
+    color: #999;
+  }
+  
+  .message {
+    padding: 15px;
+  }
+  
+  .forum-image {
+    width: 20%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px; 
+    margin-top: 10px;
+    margin-bottom: 100px;
+    object-position: center;
+    display: block;
+  }

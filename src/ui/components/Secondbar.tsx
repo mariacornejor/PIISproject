@@ -6,7 +6,7 @@ function Secondbar() {
           <a href="/nuevos">Novedades</a>
           <a href="/mejorValorados">Mejor Valorados</a>
           <a href="/news">Noticias</a>
-          <a href="#">Comunidad</a>
+          <a href="/foros">Comunidad</a>
         </div>
       </div>
     </nav>
