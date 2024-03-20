@@ -17,14 +17,17 @@ function Register() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-    
+
         // Verificar si algún campo está vacío
         if (!username || !email || !password) {
             setErrorMessage('Se tienen que rellenar todos los campos');
             setShowErrorPopup(true); // Mostrar el popup de error
+            setTimeout(() => {
+                setShowErrorPopup(false);
+            }, 2000);
             return; // Evitar que el formulario se envíe
         }
-    
+
         try {
             const response = await fetch('http://localhost:3000/api/register', {
                 method: 'POST',
@@ -35,15 +38,15 @@ function Register() {
                 },
                 body: JSON.stringify({ username, email, password }),
             });
-    
+
             if (!response.ok) {
                 throw new Error('Error sistema');
             }
-    
+
             // Si la respuesta es exitosa, mostrar mensaje de éxito
             setSuccessMessage('Registro exitoso'); // Establecer mensaje de éxito
             setShowSuccessPopup(true); // Mostrar el popup de éxito
-    
+
             // Ocultar los popups después de 2 segundos
             setTimeout(() => {
                 setSuccessMessage('');
@@ -61,9 +64,9 @@ function Register() {
                 setShowErrorPopup(true);
             }
         }
-    };    
-    
-    
+    };
+
+
     // Función para manejar cambios en los campos de entrada
     const handleInputChange = () => {
         // Ocultar el popup de error cuando se comienza a escribir de nuevo
@@ -72,26 +75,26 @@ function Register() {
 
     return (
         <div style={{ backgroundColor: '#383434', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <Link to="/" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem', marginTop: '2rem'}}>
+            <Link to="/" className="mr-0" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem', marginTop: '2rem' }}>
                 <img src={icon} style={{ width: '100px', height: '90px' }} alt="Icono" />
             </Link>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
 
-            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '0.6rem', fontFamily: 'Montserrat', fontWeight: 'bold'  }}>Crea tu Cuenta</h2>
-            
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', marginTop: '1rem'}}>
+            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '0.6rem', fontFamily: 'Montserrat', fontWeight: 'bold' }}>Crea tu Cuenta</h2>
+
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', marginTop: '1rem' }}>
                 <Link to="/pagina1" className="mr-2">
                     <img src={google} style={{ width: '65px', height: '60px', borderRadius: '7px', marginRight: '1.5rem' }} alt="Icono 1" />
                 </Link>
                 <Link to="/pagina2" className="mr-2">
-                    <img src={ig} style={{ width: '68px', height: '60px', marginRight: '1.5rem'}} alt="Icono 2" />
+                    <img src={ig} style={{ width: '68px', height: '60px', marginRight: '1.5rem' }} alt="Icono 2" />
                 </Link>
-                <Link to="/pagina3" className="mr-8.5">
-                    <img src={apple} style={{ width: '65px', height: '60px', borderRadius: '7px'}} alt="Icono 3" />
+                <Link to="/pagina3" className="mr-0">
+                    <img src={apple} style={{ width: '65px', height: '60px', borderRadius: '7px' }} alt="Icono 3" />
                 </Link>
             </div>
-            
-            <div style={{ color: 'white', fontSize: '1.5rem', margin: '1rem 0', justifyContent: 'center'}}>───────────────────────────────────────</div>
+
+            <div style={{ color: 'white', fontSize: '1.5rem', margin: '1rem 0', justifyContent: 'center' }}>───────────────────────────────────────</div>
 
             {/* Mostrar mensaje de error si existe */}
             {errorMessage && showErrorPopup && (
@@ -107,8 +110,8 @@ function Register() {
                 </div>
             )}
 
-            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '600px', textAlign: 'center'}}>
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'Montserrat'}}>
+            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '600px', textAlign: 'center' }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'Montserrat' }}>
                     <div style={{ position: 'relative' }}>
                         <label htmlFor="username" style={{ color: 'white', fontFamily: 'Montserrat', position: 'absolute', left: 0, fontWeight: 'bold' }}>USERNAME</label>
                         <input
@@ -166,7 +169,7 @@ function Register() {
                     </button>
                 </form>
             </div>
-        </div> 
+        </div>
     );
 }
 

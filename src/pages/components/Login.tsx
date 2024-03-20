@@ -5,11 +5,43 @@ import icon from "../../assets/images/icono.png";
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showErrorPopup, setShowErrorPopup] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log('Username:', username);
-        console.log('Password:', password);
+
+        if (!username || !password) {
+            setErrorMessage('Se tienen que rellenar todos los campos');
+            setShowErrorPopup(true);
+            setTimeout(() => {
+                setShowErrorPopup(false);
+            }, 2000);
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+
+                window.location.href = '/inicio';
+            } else {
+                throw new Error('Error sistema');
+            }
+        } catch (error) {
+
+        }
+
         setUsername('');
         setPassword('');
     };
@@ -42,33 +74,17 @@ function Login() {
                     />
                 </form>
             </div>
-
-            <Link to="/inicio" className="max-w-[500px] cursor-pointer text-decoration-none flex mr-0 mt-4">
                 <div>
                     <button
                         type="submit"
-                        className="w-full mt-1 p-4 bg-[#E50914] text-white rounded-[15px] cursor-pointer font-bold text-lg font-['Montserrat']"
+                        className="w-full mt-4 p-4 bg-[#E50914] text-white rounded-[15px] cursor-pointer font-bold text-lg font-['Montserrat']"
                     >
                         Iniciar Sesión
                     </button>
                 </div>
-            </Link>
             <Link to="/recuperarContrasena" className="text-white mt-4 hover:text-gray-400 font-['Montserrat'] mr-0">
                 Recuperar contraseña
             </Link>
-
-            <div className="absolute bottom-0 right-0 mb-4 mr-4 flex space-x-2">
-                <Link to="/loginAdmin">
-                    <button type="button" className="p-4 bg-[#FF7979] rounded-[15px] cursor-pointer font-bold text-white text-lg font-['Montserrat']">
-                        Administrador
-                    </button>
-                </Link>
-                <Link to="/loginDev">
-                    <button type="button" className="p-4 bg-[#E50914] rounded-[15px] cursor-pointer font-bold text-white text-lg font-['Montserrat']">
-                        Desarrollador
-                    </button>
-                </Link>
-            </div>
         </div>
 
     );
