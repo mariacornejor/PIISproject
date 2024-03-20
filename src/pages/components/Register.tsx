@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import icon from "../../assets/images/icono.png";
+import google from "../../assets/images/googlelogo.jpg";
+import ig from "../../assets/images/iglogo.png";
+import apple from "../../assets/images/applelogo.png";
+
 
 function Register() {
     const [username, setUsername] = useState('');
@@ -67,13 +71,28 @@ function Register() {
     };
 
     return (
-        <div style={{ backgroundColor: '#121212', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-            <Link to="/" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem' }}>
+        <div style={{ backgroundColor: '#383434', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <Link to="/" style={{ alignSelf: 'center', cursor: 'pointer', marginBottom: '1.5rem', marginTop: '2rem'}}>
                 <img src={icon} style={{ width: '100px', height: '90px' }} alt="Icono" />
             </Link>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" />
 
-            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '0.6rem', fontFamily: 'Montserrat', fontWeight: 'bold' }}>Registrar nuevo usuario</h2>
+            <h2 style={{ color: 'white', fontSize: '2.3rem', marginBottom: '0.6rem', fontFamily: 'Montserrat', fontWeight: 'bold'  }}>Crea tu Cuenta</h2>
             
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '0.5rem', marginTop: '1rem'}}>
+                <Link to="/pagina1" className="mr-2">
+                    <img src={google} style={{ width: '65px', height: '60px', borderRadius: '7px', marginRight: '1.5rem' }} alt="Icono 1" />
+                </Link>
+                <Link to="/pagina2" className="mr-2">
+                    <img src={ig} style={{ width: '68px', height: '60px', marginRight: '1.5rem'}} alt="Icono 2" />
+                </Link>
+                <Link to="/pagina3" className="mr-8.5">
+                    <img src={apple} style={{ width: '65px', height: '60px', borderRadius: '7px'}} alt="Icono 3" />
+                </Link>
+            </div>
+            
+            <div style={{ color: 'white', fontSize: '1.5rem', margin: '1rem 0', justifyContent: 'center'}}>───────────────────────────────────────</div>
+
             {/* Mostrar mensaje de error si existe */}
             {errorMessage && showErrorPopup && (
                 <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 0, 0, 0.8)', color: 'white', padding: '1rem', borderRadius: '10px', zIndex: '9999' }}>
@@ -88,52 +107,62 @@ function Register() {
                 </div>
             )}
 
-            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '500px', textAlign: 'center'}}>
+            <div style={{ marginTop: '1rem', width: '100%', maxWidth: '600px', textAlign: 'center'}}>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', fontFamily: 'Montserrat'}}>
-                    <input
-                        type="text"
-                        id="username"
-                        placeholder="Nombre de usuario"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
-                        onInput={handleInputChange} // Manejar cambios en el campo de nombre de usuario
-                    />
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="Correo electrónico"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
-                        onInput={handleInputChange} // Manejar cambios en el campo de correo electrónico
-                    />
-                    <input
-                        type="password"
-                        id="password"
-                        placeholder="Contraseña"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        style={{ width: '100%', padding: '1rem', backgroundColor: '#333', border: 'none', color: 'white', borderRadius: '15px' }}
-                        onInput={handleInputChange} // Manejar cambios en el campo de contraseña
-                    />
+                    <div style={{ position: 'relative' }}>
+                        <label htmlFor="username" style={{ color: 'white', fontFamily: 'Montserrat', position: 'absolute', left: 0, fontWeight: 'bold' }}>USERNAME</label>
+                        <input
+                            type="text"
+                            id="username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            style={{ width: '100%', padding: '1rem', backgroundColor: '#171616', border: 'none', color: 'white', borderRadius: '7px', marginTop: '2rem' }}
+                            onInput={handleInputChange} // Manejar cambios en el campo de nombre de usuario
+                        />
+                    </div>
+
+                    <div style={{ position: 'relative' }}>
+                        <label htmlFor="email" style={{ color: 'white', fontFamily: 'Montserrat', position: 'absolute', left: 0, fontWeight: 'bold' }}>CORREO ELECTRÓNICO</label>
+                        <input
+                            type="email"
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            style={{ width: '100%', padding: '1rem', backgroundColor: '#171616', border: 'none', color: 'white', borderRadius: '7px', marginTop: '2rem' }}
+                            onInput={handleInputChange} // Manejar cambios en el campo de correo electrónico
+                        />
+                    </div>
+
+                    <div style={{ position: 'relative' }}>
+                        <label htmlFor="password" style={{ color: 'white', fontFamily: 'Montserrat', position: 'absolute', fontWeight: 'bold', left: 0 }}>CONTRASEÑA</label>
+                        <input
+                            type="password"
+                            id="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            style={{ width: '100%', padding: '1rem', backgroundColor: '#171616', border: 'none', color: 'white', borderRadius: '7px', marginTop: '2rem' }}
+                            onInput={handleInputChange} // Manejar cambios en el campo de contraseña
+                        />
+                    </div>
+
                     <button
                         type="submit"
                         style={{
-                            width: '77%',
+                            width: '65%',
                             padding: '1rem',
-                            backgroundColor: '#E50914',
+                            backgroundColor: '#b85c5c',
                             color: 'white',
-                            borderRadius: '15px',
+                            borderRadius: '7px',
                             cursor: 'pointer',
                             fontFamily: 'Montserrat',
                             fontSize: '1rem',
                             fontWeight: 'bold',
-                            marginTop: '1rem',
+                            marginTop: '1.5rem',
                             alignSelf: 'center',
+                            marginBottom: '2rem'
                         }}
                     >
-                        Crear Cuenta
+                        CREAR CUENTA
                     </button>
                 </form>
             </div>
