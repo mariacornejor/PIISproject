@@ -10,10 +10,10 @@ import banner from "../../assets/images/banner.png";
 
 function GamePage() {
   return (
-    <div>
+    <div className="bg-background">
       <Navbar />
       <img className="banner" src={banner} />
-      <section className="bg-background body-font relative">
+      <section className=" body-font relative">
       <Secondbar />
         <div className="container px-5 py-16 mx-auto flex sm:flex-nowrap flex-wrap">
           <GameiFrame />
@@ -154,7 +154,7 @@ function GamePage() {
           {/* Componente de Juegos Similares - Ocupando 2/3 del espacio */}
           <div className="w-2/3 text-white">
             <div className="text-left mb-5 ml-4">
-              <span className="text-white font-bold underline">
+              <span className="text-white font-bold underline font-spartan">
                 Similares a este juego
               </span>
             </div>
@@ -219,7 +219,7 @@ function GamePage() {
           {/* Sección de Noticias - Ocupando 1/3 del espacio restante */}
           <div className="w-1/3 px-4 pl-10 ">
             <div className="text-left mb-5">
-              <span className="text-white font-bold underline">
+              <span className="text-white font-bold underline font-spartan">
                 Descripción
               </span>
             </div>
@@ -232,7 +232,7 @@ function GamePage() {
                 al póker desde la comodidad de tu pantalla.
               </p>
               <br></br>
-              <div className="flex flex-wrap space-x-2">
+              <div className="flex flex-wrap space-x-2 ">
                 <p>Valoración del juego: </p>
                 <Rating />
               </div>

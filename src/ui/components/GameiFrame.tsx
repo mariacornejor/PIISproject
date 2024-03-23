@@ -7,10 +7,9 @@ function GameiFrame() {
     className="py-5 lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"
     style={{ minHeight: "600px" }} // Añadiendo min-height aquí
   >
-    {" "}
     {/* Div modificado para el texto con z-index */}
-    <div className="absolute top-0 left-0 right-0 text-left pt-2 z-sm:flex-nowrap flex-wrap10">
-      <span className="text-white font-bold underline">
+    <div className="absolute top-0 left-0 right-0 text-left z-sm:flex-nowrap flex-wrap10">
+      <span className="text-white font-bold underline font-spartan ">
         Nombre del juego
       </span>
     </div>

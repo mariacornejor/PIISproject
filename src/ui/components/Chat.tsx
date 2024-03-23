@@ -18,7 +18,7 @@ function Chat() {
 
       {/* Chat (Simulado) */}
       {showChat && (
-        <div className="fixed bottom-20 right-8 bg-white p-4 rounded-lg shadow-lg w-64">
+        <div className="fixed bottom-20 right-8 bg-white p-4 rounded-lg shadow-lg w-64 text-black">
           <p>¡Hola! ¿Cómo podemos ayudarte?</p>
           {/* Contenido del chat */}
         </div>

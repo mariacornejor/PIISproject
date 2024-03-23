@@ -81,7 +81,7 @@ function Navbar(props: Props) {
       </div>
 
       {/* Search Input */}
-      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
+      <div className=" rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={25} color="white" />
         <input
           className="bg-navground p-2 w-full focus:outline-none  text-white"

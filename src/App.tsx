@@ -10,6 +10,9 @@ import MasValorados from "./pages/components/MasValorados";
 import Nuevos from "./pages/components/Nuevos";
 import Login from "./pages/components/Login";
 import Foros from "./pages/components/Foros";
+import Torneos from "./pages/components/Torneos";
+import TorneoIniciado from "./pages/components/TorneoIniciado";
+import TorneoFinalizado from "./pages/components/TorneoFinalizado";
 
 function App() {
   return (
@@ -24,6 +27,10 @@ function App() {
         <Route path="/nuevos" element={<Nuevos />} />
         <Route path="/login" element={<Login />} />
         <Route path="/foros" element={<Foros />} />
+        <Route path="/torneos" element={<Torneos />} />
+        <Route path="/torneo-iniciado" element={<TorneoIniciado />} />
+        <Route path="/torneo-finalizado" element={<TorneoFinalizado />} />
+
       </Routes>
     </Router>
   );
