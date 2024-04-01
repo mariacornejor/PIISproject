@@ -31,10 +31,10 @@ function Noticias() {
     <div>
       <Navbar />
       <img className="banner" src={banner} />
-      <div className="bg-background body-font relative h-screen  justify-center ">
+      <div className="bg-background body-font relative min-h-screen justify-center ">
       <Secondbar />
 
-        <div className="carrusel h-vh">
+        <div className="carrusel">
           <Carousel responsive={responsive}>
             <NewsCard
               imagen={uno}
