@@ -8,10 +8,14 @@ import { useState, useEffect } from "react";
 
 type Props = {
   point?: number;
+  type?: string;
+  userName?: string;
 };
 
 function Navbar(props: Props) {
   const point = props.point !== undefined ? props.point : 200;
+  const type = props.type !== undefined ? props.type : "noSession";
+  const userName = props.userName !== undefined ? props.userName : "paco";
   const [isSticky, setIsSticky] = React.useState(false);
   const [transitionClass, setTransitionClass] =
     React.useState("transition-none");
@@ -19,6 +23,18 @@ function Navbar(props: Props) {
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  let contenido = null;
+
+  if (type === "admin") {
+    contenido = admin(isDropdownOpen, userName);
+  } else if (type === "user") {
+    contenido = user(isDropdownOpen, userName);
+  } else if (type === "dev") {
+    contenido = dev(isDropdownOpen, userName);
+  } else {
+    contenido = no_sesion(isDropdownOpen);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -149,67 +165,183 @@ function Navbar(props: Props) {
           />
         </button>
         {/* Menú desplegable con control de visibilidad */}
-        <div
-          className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-            isDropdownOpen ? "block" : "hidden"
-          }`}
-          id="user-dropdown"
-        >
-          {/* Información del usuario */}
-          <div className="px-4 py-3">
-            <span className="block text-sm text-white">Bonnie Green</span>
-            <span className="block text-sm text-white truncate">
-              name@flowbite.com
-            </span>
-          </div>
-          {/* Elementos del menú */}
-          <ul className="py-2" aria-labelledby="user-menu-button">
-            <li>
-              <Link
-                to="/profile"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Perfil
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Ajustes
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Cerrar Sesion
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/register"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Registrar
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/login"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-              >
-                Login
-              </Link>
-            </li>
-            {/* Más elementos del menú... */}
-          </ul>
-        </div>
+        {contenido}
       </div>
     </div>
   );
 }
 
+function admin(isDropdownOpen: boolean, name: string) {
+  return (
+    <div
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
+      id="user-dropdown"
+    >
+      {/* Información del usuario */}
+      <div className="px-4 py-3">
+        <span className="block text-sm text-white">{name}</span>
+        <span className="block text-sm text-white truncate">
+          {name}@gmail.com
+        </span>
+      </div>
+      {/* Elementos del menú */}
+      <ul className="py-2" aria-labelledby="user-menu-button">
+        <li>
+          <Link
+            to="/profile"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Administrar Juegos
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Ajustes
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Cerrar Sesion
+          </Link>
+        </li>
+      </ul>
+    </div>
+  );
+}
+function user(isDropdownOpen: boolean, name: string) {
+  return (
+    <div
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
+      id="user-dropdown"
+    >
+      {/* Información del usuario */}
+      <div className="px-4 py-3">
+        <span className="block text-sm text-white">{name}</span>
+        <span className="block text-sm text-white truncate">
+          {name}@gmail.com
+        </span>
+      </div>
+      {/* Elementos del menú */}
+      <ul className="py-2" aria-labelledby="user-menu-button">
+        <li>
+          <Link
+            to="/profile"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Perfil
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Ajustes
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Cerrar Sesion
+          </Link>
+        </li>
+        {/* Más elementos del menú... */}
+      </ul>
+    </div>
+  );
+}
+function dev(isDropdownOpen: boolean, name: string) {
+  return (
+    <div
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
+      id="user-dropdown"
+    >
+      {/* Información del usuario */}
+      <div className="px-4 py-3">
+        <span className="block text-sm text-white">{name}</span>
+        <span className="block text-sm text-white truncate">
+          {name}@gmail.com
+        </span>
+      </div>
+      {/* Elementos del menú */}
+      <ul className="py-2" aria-labelledby="user-menu-button">
+        <li>
+          <Link
+            to="/profile"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Mis juegos
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Ajustes
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="#"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Cerrar Sesion
+          </Link>
+        </li>
+        {/* Más elementos del menú... */}
+      </ul>
+    </div>
+  );
+}
+function no_sesion(isDropdownOpen: boolean) {
+  return (
+    <div
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
+      id="user-dropdown"
+    >
+      {/* Información del usuario */}
+      <div className="px-4 py-3">
+        <span className="block text-sm text-white">No session</span>
+        <span className="block text-sm text-white truncate"></span>
+      </div>
+      {/* Elementos del menú */}
+      <ul className="py-2" aria-labelledby="user-menu-button">
+        <li>
+          <Link
+            to="/register"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Registrar
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="/login"
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+          >
+            Login
+          </Link>
+        </li>
+        {/* Más elementos del menú... */}
+      </ul>
+    </div>
+  );
+}
 export default Navbar;

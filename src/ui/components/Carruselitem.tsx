@@ -26,7 +26,7 @@ type Props = {
 const Card = (props: Props) => {
   let nombre = props.nombre;
   let imagen = props.imagen;
-  let descrip = props.descrip;
+  let descrip = "";
 
   return (
     <motion.div
