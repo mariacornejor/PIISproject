@@ -11,7 +11,7 @@ function JuegosVarios(props: Props) {
   const titulo = props.titulo !== undefined ? props.titulo : "Juegos";
 
   return (
-    <div className="w-2/3 justify-center ml-72 text-white bg-leaderboard/70 p-10 rounded-lg">
+    <div className="w-2/3 justify-center m-auto text-white bg-leaderboard/70 p-10 rounded-lg">
       <div className="text-left mb-5 ml-4">
         <span className="text-white font-bold underline">{titulo}</span>
       </div>
