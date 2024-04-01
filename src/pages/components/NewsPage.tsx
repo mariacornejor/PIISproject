@@ -34,7 +34,7 @@ function Noticias() {
       <div className="bg-background body-font relative h-screen  justify-center ">
       <Secondbar />
 
-        <div className="carrusel ">
+        <div className="carrusel h-vh">
           <Carousel responsive={responsive}>
             <NewsCard
               imagen={uno}

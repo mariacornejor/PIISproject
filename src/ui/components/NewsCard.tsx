@@ -41,8 +41,8 @@ const NCard = (props: Props) => {
       <img className="w-full" src={imagen} alt="Sunset in the mountains" />
       <div className="px-6 py-4 min-h-[180px] max-h-[180px]">
         {/* Ajusta el valor de min-h según sea necesario */}
-        <div className="font-bold text-xl mb-2">{nombre}</div>
-        <p className="text-gray-700 text-base">{descrip}</p>
+        <div className="font-bold text-xl mb-2 text-white">{nombre}</div>
+        <p className="text-white text-base">{descrip}</p>
       </div>
       <div className="px-6 pt-4 pb-2 min-h-[90PX] max-h-[90PX]" >
         {/* Itera sobre las tags para mostrarlas */}
