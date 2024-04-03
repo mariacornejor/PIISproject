@@ -62,6 +62,14 @@ function Navbar(props: Props) {
     setOpen(open === value ? 0 : value);
   };
 
+  const handleLogout = () => {
+    // Elimina el token del localStorage
+    localStorage.removeItem('token');
+
+    // Redirige al usuario
+    window.location.href = '/login';
+  };
+
   const openDrawer = () => setIsDrawerOpen(true);
   const closeDrawer = () => setIsDrawerOpen(false);
 
@@ -76,9 +84,8 @@ function Navbar(props: Props) {
 
   return (
     <div
-      className={`w-full ${
-        isSticky ? "fixed top-0 z-50" : "relative"
-      } transition-opacity duration-500  shadow-md mx-auto flex justify-between bg-navground items-center p-4 `}
+      className={`w-full ${isSticky ? "fixed top-0 z-50" : "relative"
+        } transition-opacity duration-500  shadow-md mx-auto flex justify-between bg-navground items-center p-4 `}
     >
       {/* Left side */}
       <div className="flex items-center">
@@ -174,9 +181,8 @@ function Navbar(props: Props) {
 function admin(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-        isDropdownOpen ? "block" : "hidden"
-      }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
+        }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -219,9 +225,8 @@ function admin(isDropdownOpen: boolean, name: string) {
 function user(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-        isDropdownOpen ? "block" : "hidden"
-      }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
+        }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -265,9 +270,8 @@ function user(isDropdownOpen: boolean, name: string) {
 function dev(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-        isDropdownOpen ? "block" : "hidden"
-      }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
+        }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -311,9 +315,8 @@ function dev(isDropdownOpen: boolean, name: string) {
 function no_sesion(isDropdownOpen: boolean) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
-        isDropdownOpen ? "block" : "hidden"
-      }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
+        }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}

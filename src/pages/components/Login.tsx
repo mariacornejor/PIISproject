@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import icon from "../../assets/images/icono.png";
 import google from "../../assets/images/googlelogo.jpg";
 import ig from "../../assets/images/iglogo.png";
@@ -13,7 +12,7 @@ function Login() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+    
         if (!username || !password) {
             setErrorMessage('Se tienen que rellenar todos los campos');
             setShowErrorPopup(true);
@@ -30,23 +29,25 @@ function Login() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    username,
+                    email: username,
                     password,
                 }),
             });
             const data = await response.json();
             if (response.ok) {
-
+                localStorage.setItem('token', data.token);
                 window.location.href = '/inicio';
             } else {
-                throw new Error('Error sistema');
+                throw new Error(data.message || 'Error en el sistema');
             }
         } catch (error) {
-
+            const message = (error instanceof Error) ? error.message : 'Error al iniciar sesión';
+            setErrorMessage(message);
+            setShowErrorPopup(true);
+            setTimeout(() => {
+                setShowErrorPopup(false);
+            }, 2000);
         }
-
-        setUsername('');
-        setPassword('');
     };
 
     return (
