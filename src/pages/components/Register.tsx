@@ -17,7 +17,7 @@ function Register() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
+    
         // Verificar si algún campo está vacío
         if (!username || !email || !password) {
             setErrorMessage('Se tienen que rellenar todos los campos');
@@ -27,7 +27,7 @@ function Register() {
             }, 2000);
             return; // Evitar que el formulario se envíe
         }
-
+    
         try {
             const response = await fetch('http://localhost:3000/api/register', {
                 method: 'POST',
@@ -38,15 +38,22 @@ function Register() {
                 },
                 body: JSON.stringify({ username, email, password }),
             });
-
+    
             if (!response.ok) {
                 throw new Error('Error sistema');
             }
-
+    
+            // Si la respuesta es exitosa, obtener el token de la respuesta
+            const data = await response.json();
+            const token = data.token;
+    
+            // Establecer la cookie del token en el navegador del usuario
+            document.cookie = `token=${token}; path=/;`;
+    
             // Si la respuesta es exitosa, mostrar mensaje de éxito
             setSuccessMessage('Registro exitoso'); // Establecer mensaje de éxito
             setShowSuccessPopup(true); // Mostrar el popup de éxito
-
+    
             // Ocultar los popups después de 2 segundos
             setTimeout(() => {
                 setSuccessMessage('');
