@@ -12,6 +12,14 @@ type Props = {
   userName?: string;
 };
 
+const handleLogout = () => {
+  // Elimina el token del localStorage
+  document.cookie = "token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+
+  // Redirige al usuario
+  //window.location.href = "/login";
+};
+
 function Navbar(props: Props) {
   const point = props.point !== undefined ? props.point : 200;
   const [type, setType] = React.useState(
@@ -113,14 +121,6 @@ function Navbar(props: Props) {
 
   const handleOpen = (value: number) => {
     setOpen(open === value ? 0 : value);
-  };
-
-  const handleLogout = () => {
-    // Elimina el token del localStorage
-    localStorage.removeItem("token");
-
-    // Redirige al usuario
-    window.location.href = "/login";
   };
 
   const openDrawer = () => setIsDrawerOpen(true);
@@ -264,12 +264,13 @@ function admin(isDropdownOpen: boolean, name: string, email: string) {
           </Link>
         </li>
         <li>
-          <Link
-            to="#"
+          <a
+            href="/"
+            onClick={handleLogout}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
             Cerrar Sesion
-          </Link>
+          </a>
         </li>
       </ul>
     </div>
@@ -307,12 +308,13 @@ function user(isDropdownOpen: boolean, name: string, email: string) {
           </Link>
         </li>
         <li>
-          <Link
-            to="#"
+          <a
+            href="/"
+            onClick={handleLogout}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
             Cerrar Sesion
-          </Link>
+          </a>
         </li>
         {/* Más elementos del menú... */}
       </ul>
@@ -351,12 +353,13 @@ function dev(isDropdownOpen: boolean, name: string, email: string) {
           </Link>
         </li>
         <li>
-          <Link
-            to="#"
+          <a
+            href="/"
+            onClick={handleLogout}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
           >
             Cerrar Sesion
-          </Link>
+          </a>
         </li>
         {/* Más elementos del menú... */}
       </ul>
