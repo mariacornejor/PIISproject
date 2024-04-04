@@ -17,19 +17,19 @@ function Navbar(props: Props) {
   const [type, setType] = React.useState(
     props.type !== undefined ? props.type : "noSession"
   );
+  const [email, setEmail] = React.useState("email@gmail.com");
   const userName = props.userName !== undefined ? props.userName : "paco";
   const [isSticky, setIsSticky] = React.useState(false);
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const tokeN = document.cookie;
 
   async function obtenerTipoDeUsuario() {
     try {
-      // Recuperar el token de las cookies
-      let token = document.cookie;
       //console.log(token.split("=")[1]);
-      token = token.split("=")[1];
+      let token = tokeN.split("=")[1];
       if (!token) {
         throw new Error("No se encontró el token del usuario");
       }
@@ -62,23 +62,25 @@ function Navbar(props: Props) {
   }
 
   // Llamar a la función y manejar el resultado según sea necesario
-  obtenerTipoDeUsuario()
-    .then((typeofuser) => {
-      console.log(typeofuser); // Haz algo con el tipo de usuario, por ejemplo, actualizar la UI
-      setType(typeofuser);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  if (tokeN != "") {
+    obtenerTipoDeUsuario()
+      .then((typeofuser) => {
+        console.log(typeofuser); // Haz algo con el tipo de usuario, por ejemplo, actualizar la UI
+        setType(typeofuser);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   let contenido = null;
 
   if (type === "admin") {
-    contenido = admin(isDropdownOpen, userName);
+    contenido = admin(isDropdownOpen, userName, email);
   } else if (type === "user") {
-    contenido = user(isDropdownOpen, userName);
+    contenido = user(isDropdownOpen, userName, email);
   } else if (type === "dev") {
-    contenido = dev(isDropdownOpen, userName);
+    contenido = dev(isDropdownOpen, userName, email);
   } else {
     contenido = no_sesion(isDropdownOpen);
   }
@@ -226,7 +228,7 @@ function Navbar(props: Props) {
   );
 }
 
-function admin(isDropdownOpen: boolean, name: string) {
+function admin(isDropdownOpen: boolean, name: string, email: string) {
   return (
     <div
       className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
@@ -271,7 +273,7 @@ function admin(isDropdownOpen: boolean, name: string) {
     </div>
   );
 }
-function user(isDropdownOpen: boolean, name: string) {
+function user(isDropdownOpen: boolean, name: string, email: string) {
   return (
     <div
       className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
@@ -317,7 +319,7 @@ function user(isDropdownOpen: boolean, name: string) {
     </div>
   );
 }
-function dev(isDropdownOpen: boolean, name: string) {
+function dev(isDropdownOpen: boolean, name: string, email: string) {
   return (
     <div
       className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
