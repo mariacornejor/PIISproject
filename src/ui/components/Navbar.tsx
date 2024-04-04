@@ -14,15 +14,62 @@ type Props = {
 
 function Navbar(props: Props) {
   const point = props.point !== undefined ? props.point : 200;
-  const type = props.type !== undefined ? props.type : "noSession";
+  const [type, setType] = React.useState(
+    props.type !== undefined ? props.type : "noSession"
+  );
   const userName = props.userName !== undefined ? props.userName : "paco";
   const [isSticky, setIsSticky] = React.useState(false);
-  const [transitionClass, setTransitionClass] =
-    React.useState("transition-none");
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  async function obtenerTipoDeUsuario() {
+    try {
+      // Recuperar el token de las cookies
+      let token = document.cookie;
+      //console.log(token.split("=")[1]);
+      token = token.split("=")[1];
+      if (!token) {
+        throw new Error("No se encontró el token del usuario");
+      }
+
+      // Realizar una solicitud al endpoint que retorna la información del usuario basándose en el token
+      const response = await fetch("http://localhost:3000/api/profile", {
+        method: "GET",
+        credentials: "include",
+      });
+
+      const data = await response.json();
+      //console.log("Console log");
+      //console.log(data);
+      if (response.ok) {
+        // Aquí, asumo que 'data' contiene un campo que indica el tipo de usuario, por ejemplo 'tipoUsuario'
+        return data.typeofuser; // O el campo correspondiente que indica el tipo de usuario
+      } else {
+        throw new Error(
+          data.message || "Error al obtener la información del usuario"
+        );
+      }
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Error al obtener el tipo de usuario";
+      console.error(message);
+      // Manejo adicional de errores si es necesario (por ejemplo, mostrar un mensaje al usuario)
+    }
+  }
+
+  // Llamar a la función y manejar el resultado según sea necesario
+  obtenerTipoDeUsuario()
+    .then((typeofuser) => {
+      console.log(typeofuser); // Haz algo con el tipo de usuario, por ejemplo, actualizar la UI
+      setType(typeofuser);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
   let contenido = null;
 
@@ -64,10 +111,10 @@ function Navbar(props: Props) {
 
   const handleLogout = () => {
     // Elimina el token del localStorage
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
 
     // Redirige al usuario
-    window.location.href = '/login';
+    window.location.href = "/login";
   };
 
   const openDrawer = () => setIsDrawerOpen(true);
@@ -84,8 +131,9 @@ function Navbar(props: Props) {
 
   return (
     <div
-      className={`w-full ${isSticky ? "fixed top-0 z-50" : "relative"
-        } transition-opacity duration-500  shadow-md mx-auto flex justify-between bg-navground items-center p-4 `}
+      className={`w-full ${
+        isSticky ? "fixed top-0 z-50" : "relative"
+      } transition-opacity duration-500  shadow-md mx-auto flex justify-between bg-navground items-center p-4 `}
     >
       {/* Left side */}
       <div className="flex items-center">
@@ -181,8 +229,9 @@ function Navbar(props: Props) {
 function admin(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
-        }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -225,8 +274,9 @@ function admin(isDropdownOpen: boolean, name: string) {
 function user(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
-        }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -270,8 +320,9 @@ function user(isDropdownOpen: boolean, name: string) {
 function dev(isDropdownOpen: boolean, name: string) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
-        }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
@@ -315,8 +366,9 @@ function dev(isDropdownOpen: boolean, name: string) {
 function no_sesion(isDropdownOpen: boolean) {
   return (
     <div
-      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${isDropdownOpen ? "block" : "hidden"
-        }`}
+      className={`z-50 my-4 text-base list-none bg-navground divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600 ${
+        isDropdownOpen ? "block" : "hidden"
+      }`}
       id="user-dropdown"
     >
       {/* Información del usuario */}
