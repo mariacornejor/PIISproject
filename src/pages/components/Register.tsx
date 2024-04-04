@@ -49,7 +49,7 @@ function Register() {
     
             // Establecer la cookie del token en el navegador del usuario
             document.cookie = `token=${token}; path=/;`;
-    
+                
             // Si la respuesta es exitosa, mostrar mensaje de éxito
             setSuccessMessage('Registro exitoso'); // Establecer mensaje de éxito
             setShowSuccessPopup(true); // Mostrar el popup de éxito
@@ -72,8 +72,7 @@ function Register() {
             }
         }
     };
-
-
+    
     // Función para manejar cambios en los campos de entrada
     const handleInputChange = () => {
         // Ocultar el popup de error cuando se comienza a escribir de nuevo
