@@ -32,7 +32,7 @@ function Landing() {
   };
   return (
     <div className="background bg-background">
-      <Navbar type="user" userName="Luis" />
+      <Navbar />
       <img className="banner" src={banner} />
       <Secondbar />
 
