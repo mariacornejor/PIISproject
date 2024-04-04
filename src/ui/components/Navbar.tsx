@@ -18,18 +18,20 @@ function Navbar(props: Props) {
     props.type !== undefined ? props.type : "noSession"
   );
   const [email, setEmail] = React.useState("email@gmail.com");
-  const userName = props.userName !== undefined ? props.userName : "paco";
+  const [userName, setUsername] = React.useState(
+    props.userName !== undefined ? props.userName : "nombre usuario"
+  );
   const [isSticky, setIsSticky] = React.useState(false);
   const [open, setOpen] = React.useState(0);
   const [openAlert, setOpenAlert] = React.useState(true);
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-  const tokeN = document.cookie;
+  const cookies = document.cookie;
 
   async function obtenerTipoDeUsuario() {
     try {
       //console.log(token.split("=")[1]);
-      let token = tokeN.split("=")[1];
+      let token = cookies.split("=")[1];
       if (!token) {
         throw new Error("No se encontró el token del usuario");
       }
@@ -45,6 +47,8 @@ function Navbar(props: Props) {
       //console.log(data);
       if (response.ok) {
         // Aquí, asumo que 'data' contiene un campo que indica el tipo de usuario, por ejemplo 'tipoUsuario'
+        setUsername(data.username);
+        setEmail(data.email);
         return data.typeofuser; // O el campo correspondiente que indica el tipo de usuario
       } else {
         throw new Error(
@@ -62,7 +66,7 @@ function Navbar(props: Props) {
   }
 
   // Llamar a la función y manejar el resultado según sea necesario
-  if (tokeN != "") {
+  if (cookies != "") {
     obtenerTipoDeUsuario()
       .then((typeofuser) => {
         console.log(typeofuser); // Haz algo con el tipo de usuario, por ejemplo, actualizar la UI
@@ -239,9 +243,7 @@ function admin(isDropdownOpen: boolean, name: string, email: string) {
       {/* Información del usuario */}
       <div className="px-4 py-3">
         <span className="block text-sm text-white">{name}</span>
-        <span className="block text-sm text-white truncate">
-          {name}@gmail.com
-        </span>
+        <span className="block text-sm text-white truncate">{email}</span>
       </div>
       {/* Elementos del menú */}
       <ul className="py-2" aria-labelledby="user-menu-button">
@@ -284,9 +286,7 @@ function user(isDropdownOpen: boolean, name: string, email: string) {
       {/* Información del usuario */}
       <div className="px-4 py-3">
         <span className="block text-sm text-white">{name}</span>
-        <span className="block text-sm text-white truncate">
-          {name}@gmail.com
-        </span>
+        <span className="block text-sm text-white truncate">{email}</span>
       </div>
       {/* Elementos del menú */}
       <ul className="py-2" aria-labelledby="user-menu-button">
@@ -330,9 +330,7 @@ function dev(isDropdownOpen: boolean, name: string, email: string) {
       {/* Información del usuario */}
       <div className="px-4 py-3">
         <span className="block text-sm text-white">{name}</span>
-        <span className="block text-sm text-white truncate">
-          {name}@gmail.com
-        </span>
+        <span className="block text-sm text-white truncate">{email}</span>
       </div>
       {/* Elementos del menú */}
       <ul className="py-2" aria-labelledby="user-menu-button">
