@@ -5,21 +5,15 @@ body {
   color: #fff; 
 }
 
-
-
 .banner {
   width: 100%;
   max-height: 200px;
   object-fit: cover;
 }
 
-
-
 .bg-background {
   background-color: #f2f2f2;
 }
-
-
 
 .forum-container {
   display: flex;
@@ -27,8 +21,6 @@ body {
   align-items: center;
   padding-top: 20px;
 }
-
-
 
 .post {
   background-color: transparent; 
@@ -39,8 +31,6 @@ body {
   padding: 20px;
 }
 
-
-
 .user-info {
   display: flex;
   align-items: center;
@@ -49,6 +39,13 @@ body {
 .user-avatar {
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-avatar-small {
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -77,16 +74,12 @@ body {
   font-size: 50px; 
 }
 
-
-
 .post-content {
   padding: 15px;
   font-size: 16px;
   line-height: 1.5;
   color: #fff; 
 }
-
-
 
 .forum-image {
   width: 50%;
@@ -100,8 +93,6 @@ body {
   margin-right: auto;
 }
 
-
-
 .separator-short {
   height: 1px; 
   width: 70%; 
@@ -113,8 +104,55 @@ body {
   transform: translateX(-50%);
 }
 
-
-
 .extra-space {
-  height: 50px; 
+  height: 30px; /* Espacio adicional entre las respuestas */
+}
+.post {
+  background-color: transparent;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 60px; /* Se aumentó el espacio entre comentarios */
+  padding: 20px;
+}
+
+.response {
+  background-color: transparent;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 12px; /* Tamaño de fuente más pequeño */
+}
+
+.response .user-info {
+  display: flex;
+  align-items: center;
+}
+
+.response .user-avatar-small {
+  width: 26px; /* Tamaño de la foto de perfil más pequeño */
+  height: 26px; /* Ajuste del alto para que coincida con el ancho */
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.response .username-timestamp {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.response .username {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.response .timestamp {
+  color: #999;
+  margin-left: 4px; /* Ajuste de margen para separar el nombre de usuario y la marca de tiempo */
+}
+
+.response .post-content {
+  font-size: 12px; /* Tamaño de fuente más pequeño */
 }
