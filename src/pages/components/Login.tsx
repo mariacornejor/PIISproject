@@ -5,7 +5,7 @@ import ig from "../../assets/images/iglogo.png";
 import apple from "../../assets/images/applelogo.png";
 
 function Login() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showErrorPopup, setShowErrorPopup] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
@@ -13,7 +13,7 @@ function Login() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
     
-        if (!username || !password) {
+        if (!email || !password) {
             setErrorMessage('Se tienen que rellenar todos los campos');
             setShowErrorPopup(true);
             setTimeout(() => {
@@ -26,17 +26,18 @@ function Login() {
             const response = await fetch('http://localhost:3000/api/login', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Origin': 'http://localhost:3000',
                 },
                 body: JSON.stringify({
-                    email: username,
+                    email,
                     password,
                 }),
             });
             const data = await response.json();
             if (response.ok) {
-                localStorage.setItem('token', data.token);
-                window.location.href = '/inicio';
+                document.cookie = `token=${data.token}; path=/`;                                                        
+                window.location.href = '/';
             } else {
                 throw new Error(data.message || 'Error en el sistema');
             }
@@ -76,12 +77,12 @@ function Login() {
             <div className="w-full max-w-lg text-center">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-[1rem]" style={{ fontFamily: 'Montserrat' }}>
                     <div className="relative">
-                        <label htmlFor="username" className="text-white font-bold flex" style={{ left: 0 }}>USERNAME</label>
+                        <label htmlFor="email" className="text-white font-bold flex" style={{ left: 0 }}>EMAIL</label>
                         <input
                             type="text"
-                            id="username"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            id="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             className="w-full py-4 px-4 bg-[#171616] border-none text-white rounded-md mt-2"
                         />
                     </div>
