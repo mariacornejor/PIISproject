@@ -19,7 +19,7 @@ function JuegosVarios(props: any) {
     const obtenerJuegos = async () => {
       try {
         const response = await axios.get('http://localhost:3000/api/games'); // Especifica la URL completa del backend
-        console.log(response.data)
+        console.log('Juegos ', response.data)
         // Verifica si los datos recibidos son un array
         if (Array.isArray(response.data)) {
           // Verifica si la respuesta está vacía

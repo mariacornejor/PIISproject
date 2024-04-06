@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import icon from "../../assets/images/icono.png";
 import { VscCircleLarge } from "react-icons/vsc";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
 type Props = {
   point?: number;
@@ -35,6 +36,7 @@ function Navbar(props: Props) {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const cookies = document.cookie;
+  const [categories, setCategories] = useState<string[]>([]);
 
   async function obtenerTipoDeUsuario() {
     try {
@@ -135,6 +137,30 @@ function Navbar(props: Props) {
     { icon: <VscCircleLarge size={25} className="mr-4" />, text: "Help" },
   ];
 
+
+  useEffect(() => {
+    const obtenerCategorias = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/types"); 
+        // Verifica si los datos recibidos son un array
+        if (Array.isArray(response.data)) {
+          // Verifica si la respuesta está vacía
+          if (response.data.length === 0) {
+            console.warn("La respuesta del servidor está vacía.");
+          } else {
+            setCategories(response.data);
+          }
+        } else {
+          console.error("Los datos recibidos no son un array:", response.data);
+        }
+      } catch (error) {
+        console.error("Error al recuperar las categoias:", error);
+      }
+    };
+
+    obtenerCategorias();
+  }, []);
+
   return (
     <div
       className={`w-full ${
@@ -196,17 +222,17 @@ function Navbar(props: Props) {
           </span>
         </h2>
         <nav>
-          <ul className="flex flex-col p-4 text-white">
-            {menuItems.map(({ icon, text }, index) => {
-              return (
-                <div key={index} className=" py-4">
-                  <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-background">
-                    {icon} {text}
-                  </li>
-                </div>
-              );
-            })}
-          </ul>
+            <ul className="flex flex-col p-4 text-white">
+              {categories.map((cat, index) => {
+                return (
+                  <div key={index} className="py-4">
+                    <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-background">
+                    <VscCircleLarge size={25} className="mr-4" />{cat}
+                    </li>
+                  </div>
+                );
+              })}
+            </ul>
         </nav>
       </div>
       <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
