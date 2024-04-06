@@ -34,12 +34,13 @@ function Login() {
                     password,
                 }),
             });
-            const data = await response.json();
             if (response.ok) {
+                const data = await response.json();
                 document.cookie = `token=${data.token}; path=/`;                                                        
                 window.location.href = '/';
             } else {
-                throw new Error(data.message || 'Error en el sistema');
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error en el sistema');
             }
         } catch (error) {
             const message = (error instanceof Error) ? error.message : 'Error al iniciar sesión';
@@ -73,6 +74,12 @@ function Login() {
             </div>
 
             <div className="text-white text-[1.5rem] m-[1rem]">───────────────────────────────────────</div>
+
+            {errorMessage && showErrorPopup && (
+                <div style={{ position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'rgba(255, 0, 0, 0.8)', color: 'white', padding: '1rem', borderRadius: '10px', zIndex: '9999' }}>
+                    {errorMessage}
+                </div>
+            )}
 
             <div className="w-full max-w-lg text-center">
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-[1rem]" style={{ fontFamily: 'Montserrat' }}>
