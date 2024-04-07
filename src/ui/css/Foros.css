@@ -105,24 +105,26 @@ body {
 }
 
 .extra-space {
-  height: 30px; /* Espacio adicional entre las respuestas */
+  height: 30px; 
 }
 .post {
-  background-color: transparent;
+  background-color: #222222; 
+  color: #fff; 
   border-radius: 10px;
   border: 1px solid #ccc;
-  margin-bottom: 60px; /* Se aumentó el espacio entre comentarios */
+  margin-bottom: 60px; 
   padding: 20px;
 }
 
 .response {
-  background-color: transparent;
+  background-color: #666666; 
+  color: #fff; 
   border-radius: 8px;
   border: 1px solid #ccc;
   margin-bottom: 15px;
   margin-top: 30px;
   padding: 15px;
-  font-size: 12px; /* Tamaño de fuente más pequeño */
+  font-size: 12px; 
 }
 
 .response .user-info {
@@ -131,8 +133,8 @@ body {
 }
 
 .response .user-avatar-small {
-  width: 26px; /* Tamaño de la foto de perfil más pequeño */
-  height: 26px; /* Ajuste del alto para que coincida con el ancho */
+  width: 26px; 
+  height: 26px; 
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -150,9 +152,9 @@ body {
 
 .response .timestamp {
   color: #999;
-  margin-left: 4px; /* Ajuste de margen para separar el nombre de usuario y la marca de tiempo */
+  margin-left: 4px; 
 }
 
 .response .post-content {
-  font-size: 12px; /* Tamaño de fuente más pequeño */
+  font-size: 12px; 
 }
