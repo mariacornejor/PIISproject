@@ -1,21 +1,18 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 type Props = {
   comentario?: string;
+  onSubmitComentario: (comentario: string) => void;
 };
 
-function Comentarioitem(props: Props) {
-  const comentarios =
-    props.comentario !== undefined
-      ? props.comentario
-      : "¡Bienvenido a mi perfil!";
-  const [comentario, setComentario] = useState(comentarios);
+function Comentarioitem({
+  comentario: comentarioInicial,
+  onSubmitComentario,
+}: Props) {
+  const [comentario, setComentario] = useState(comentarioInicial || "");
 
   const enviarComentario = () => {
-    // Aquí puedes agregar la lógica para manejar el envío del comentario,
-    // como actualizar el estado de la aplicación o enviarlo a una base de datos.
-    console.log(comentario); // Ejemplo de acción al enviar el comentario
-    // Limpiar el área de texto después del envío
+    onSubmitComentario(comentario);
   };
 
   return (
