@@ -23,7 +23,7 @@ function App() {
         <Route path="/game" element={<GamePage />} />
         <Route
           path="/game/tic-tac-toe"
-          element={<GamePage enlace="http://185.236.248.96:3000/" />}
+          element={<GamePage enlace="http://185.236.248.96:3002/" />}
         />
         <Route
           path="/game/chess"
