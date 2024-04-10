@@ -3,9 +3,10 @@ import Carruselitem from "../../ui/components/Carruselitem";
 import Carousel from "react-multi-carousel";
 import banner from "../../assets/images/banner.png";
 import juego from "../../assets/images/juego.png";
+import chess from "../../assets/images/ajedrez.png";
 import "react-multi-carousel/lib/styles.css";
 import Secondbar from "../../ui/components/Secondbar";
-import poker from "../../assets/images/poker.png";
+import snow from "../../assets/images/snow-fight.png";
 import smalland from "../../assets/images/smalland.png";
 import ninja from "../../assets/images/100Ninja.png";
 import JuegosVarios from "../../ui/components/JuegosVarios";
@@ -42,24 +43,28 @@ function Landing() {
         </span>
         <Carousel responsive={responsive}>
           <Carruselitem
-            imagen={poker}
+            imagen={chess}
             descrip="No se aceta dinero real... todavia"
-            nombre="Poker"
+            nombre="Ajedrez"
+            link="/game/chess"
           />
           <Carruselitem
-            imagen={smalland}
+            imagen={snow}
             descrip="no hay gran poblema que un pequeño no pueda resolver"
-            nombre="SmalLand"
+            nombre="Snow fight"
+            link="/game/snow-fight"
+          />
+
+          <Carruselitem
+            imagen={juego}
+            descrip="Juego chulo"
+            nombre="Tic Tac Toe"
+            link="/game/tic-tac-toe"
           />
           <Carruselitem
             imagen={ninja}
             descrip="Hazte con todos"
             nombre="100 ninja"
-          />
-          <Carruselitem
-            imagen={juego}
-            descrip="Juego chulo"
-            nombre="Solitario"
           />
         </Carousel>
       </div>

@@ -75,11 +75,11 @@ function Navbar(props: Props) {
     }
   }
 
-  // Llamar a la función y manejar el resultado según sea necesario
+  // Llamar a la función
   if (cookies != "") {
     obtenerTipoDeUsuario()
       .then((typeofuser) => {
-        console.log(typeofuser); // Haz algo con el tipo de usuario, por ejemplo, actualizar la UI
+        console.log(typeofuser);
         setType(typeofuser);
       })
       .catch((error) => {
@@ -137,11 +137,10 @@ function Navbar(props: Props) {
     { icon: <VscCircleLarge size={25} className="mr-4" />, text: "Help" },
   ];
 
-
   useEffect(() => {
     const obtenerCategorias = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/types"); 
+        const response = await axios.get("http://localhost:3000/api/types");
         // Verifica si los datos recibidos son un array
         if (Array.isArray(response.data)) {
           // Verifica si la respuesta está vacía
@@ -222,17 +221,18 @@ function Navbar(props: Props) {
           </span>
         </h2>
         <nav>
-            <ul className="flex flex-col p-4 text-white">
-              {categories.map((cat, index) => {
-                return (
-                  <div key={index} className="py-4">
-                    <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-background">
-                    <VscCircleLarge size={25} className="mr-4" />{cat}
-                    </li>
-                  </div>
-                );
-              })}
-            </ul>
+          <ul className="flex flex-col p-4 text-white">
+            {categories.map((cat, index) => {
+              return (
+                <div key={index} className="py-4">
+                  <li className="text-xl flex cursor-pointer  w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-background">
+                    <VscCircleLarge size={25} className="mr-4" />
+                    {cat}
+                  </li>
+                </div>
+              );
+            })}
+          </ul>
         </nav>
       </div>
       <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

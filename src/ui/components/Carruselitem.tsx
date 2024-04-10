@@ -5,12 +5,13 @@ function Carruselitem(props: Props) {
   let imagen = props.imagen;
   let nombre = props.nombre;
   let descrip = props.descrip;
+  let link = props.link;
 
   return (
     <div>
       <section className="bg-neutral-900 px-4 py-12">
         <div className="mx-auto w-fit">
-          <Card nombre={nombre} descrip={descrip} imagen={imagen} />
+          <Card nombre={nombre} descrip={descrip} imagen={imagen} link={link} />
         </div>
       </section>
     </div>
@@ -21,12 +22,14 @@ type Props = {
   nombre: string;
   imagen: string;
   descrip: string;
+  link?: string;
 };
 
 const Card = (props: Props) => {
   let nombre = props.nombre;
   let imagen = props.imagen;
   let descrip = "";
+  let link = props.link !== undefined ? props.link : "/game/tic-tac-toe";
 
   return (
     <motion.div
@@ -82,7 +85,7 @@ const Card = (props: Props) => {
       </div>
       <button className="absolute bottom-4 left-4 right-4 z-20 rounded border-2 border-white bg-white py-2 text-center font-mono font-black uppercase text-neutral-800 backdrop-blur transition-colors hover:bg-white/30 hover:text-white">
         <Link
-          to="/game"
+          to={link}
           className="block w-full text-background h-full  hover:text-white"
         >
           Jugar

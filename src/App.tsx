@@ -21,7 +21,18 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/game" element={<GamePage />} />
-        <Route path="/game/tic-tac-toe" element={<GamePage enlace="http://185.236.248.96:3000/"/>}/>
+        <Route
+          path="/game/tic-tac-toe"
+          element={<GamePage enlace="http://185.236.248.96:3000/" />}
+        />
+        <Route
+          path="/game/chess"
+          element={<GamePage enlace="http://185.236.248.96:3037/" />}
+        />
+        <Route
+          path="/game/snow-fight"
+          element={<GamePage enlace="http://185.236.248.96:5000/" />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route path="/news" element={<Noticias />} />
         <Route path="/register" element={<Register />} />
