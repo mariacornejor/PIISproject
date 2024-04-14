@@ -7,17 +7,31 @@ import Rating from "../../ui/components/Rating.tsx";
 import Chat from "../../ui/components/Chat.tsx";
 import Secondbar from "../../ui/components/Secondbar";
 import banner from "../../assets/images/banner.png";
+import profileImage from "../../assets/images/perroHuman.webp";
 
 type Props = {
   enlace?: string;
-  name?:string;
+  name?: string;
+  tipo?: string;
 };
 
 function GamePage(props: Props) {
   const enlace =
     props.enlace !== undefined ? props.enlace : "http://185.236.248.96:3000/";
-  const name =
-    props.name !== undefined ? props.name : "Nombre del Juego";
+  const name = props.name !== undefined ? props.name : "Nombre del Juego";
+
+  const tipo = props.tipo !== undefined ? props.tipo : "Ajedrez";
+
+  let contenido = leaderboard();
+
+  if (tipo == "snow") {
+    contenido = leaderboard();
+  } else if (tipo == "tic") {
+    contenido = turnosJugadores();
+  } else if (tipo == "Ajedrez") {
+    contenido = movimientosAjedrez();
+  }
+
   return (
     <div className="bg-background">
       <Navbar />
@@ -26,135 +40,11 @@ function GamePage(props: Props) {
       <section className=" body-font relative">
         {/*<Secondbar />*/}
         <div className="container px-5 py-16 mx-auto flex sm:flex-nowrap flex-wrap">
-          <GameiFrame enlace={enlace} nombre={name}/>
+          <GameiFrame enlace={enlace} nombre={name} />
           <div className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
             <div className="max-w-2xl mx-auto">
               <div className="bg-leaderboard p-4 max-w-md rounded-lg border shadow-md sm:p-8 ">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold leading-none text-white ">
-                    Leaderboard
-                  </h3>
-                  <a
-                    href="#"
-                    className="text-sm font-medium text-white hover:underline "
-                  >
-                    View all
-                  </a>
-                </div>
-                <div className="flow-root">
-                  <ul role="list" className="divide-y divide-gray-200">
-                    <li className="py-3 sm:py-4">
-                      <div className="flex items-center space-x-4 ">
-                        <div className="text-white flex-shrink-0">
-                          <p>1</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
-                            alt="Bonnie image"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate ">
-                            dragon10
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-base font-semibold text-white ">
-                          3467px
-                        </div>
-                      </div>
-                    </li>
-                    <li className="py-3 sm:py-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-white flex-shrink-0">
-                          <p>2</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
-                            alt="Neil image"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate">
-                            elpistolas
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-white font-semibold">
-                          2367px
-                        </div>
-                      </div>
-                    </li>
-                    <li className="py-3 sm:py-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-white flex-shrink-0">
-                          <p>3</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
-                            alt="Michael image"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate">
-                            elmakina51
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-base font-semibold text-white">
-                          367px
-                        </div>
-                      </div>
-                    </li>
-                    <li className="py-3 sm:py-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-white flex-shrink-0">
-                          <p>4</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
-                            alt="Lana image"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate ">
-                            killer77
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-base font-semibold text-white">
-                          59px
-                        </div>
-                      </div>
-                    </li>
-                    <li className="pt-3 pb-0 sm:pt-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="text-white flex-shrink-0">
-                          <p>5</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <img
-                            className="w-8 h-8 rounded-full"
-                            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                            alt="Thomas image"
-                          />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white truncate ">
-                            camper
-                          </p>
-                        </div>
-                        <div className="inline-flex items-center text-base font-semibold text-white ">
-                          <p>12px</p>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
+                {contenido}
               </div>
             </div>
           </div>
@@ -254,6 +144,265 @@ function GamePage(props: Props) {
         {/* Icono de Chat en la parte inferior derecha */}
         <Chat />
       </section>
+    </div>
+  );
+}
+
+function leaderboard() {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold leading-none text-white ">
+          Leaderboard
+        </h3>
+        <a href="#" className="text-sm font-medium text-white hover:underline ">
+          View all
+        </a>
+      </div>
+      <div className="flow-root">
+        <ul role="list" className="divide-y divide-gray-200">
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4 ">
+              <div className="text-white flex-shrink-0">
+                <p>1</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-3.jpg"
+                  alt="Bonnie image"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate ">
+                  dragon10
+                </p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-white ">
+                3467px
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>2</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                  alt="Neil image"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  elpistolas
+                </p>
+              </div>
+              <div className="inline-flex items-center text-white font-semibold">
+                2367px
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>3</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                  alt="Michael image"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  elmakina51
+                </p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-white">
+                367px
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>4</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src={profileImage}
+                  alt="Lana image"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate ">
+                  carlos
+                </p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-white">
+                120px
+              </div>
+            </div>
+          </li>
+          <li className="pt-3 pb-0 sm:pt-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>5</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                  alt="Thomas image"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate ">
+                  camper
+                </p>
+              </div>
+              <div className="inline-flex items-center text-base font-semibold text-white ">
+                <p>12px</p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function turnosJugadores() {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold leading-none text-white ">
+          Turnos de Jugadores
+        </h3>
+      </div>
+      <div className="flow-root">
+        <ul role="list" className="divide-y divide-gray-200">
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4 ">
+              <div className="text-white flex-shrink-0">
+                <p>Le toca</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-1.jpg"
+                  alt="Jugador 1"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate ">
+                  carlos
+                </p>
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Siguiente</p>
+              </div>
+              <div className="flex-shrink-0">
+                <img
+                  className="w-8 h-8 rounded-full"
+                  src="https://flowbite.com/docs/images/people/profile-picture-2.jpg"
+                  alt="Jugador 2"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 2
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+function movimientosAjedrez() {
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-xl font-bold leading-none text-white">
+          Movimientos de Ajedrez
+        </h3>
+      </div>
+      <div className="flow-root">
+        <ul role="list" className="divide-y divide-gray-200">
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Mov 1</p>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 1: Peón a e4
+                </p>
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Mov 2</p>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 2: Peón a e5
+                </p>
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Mov 3</p>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 1: Caballo a f3
+                </p>
+              </div>
+            </div>
+          </li>
+          <li className="py-3 sm:py-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Mov 4</p>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 2: Caballo a c6
+                </p>
+              </div>
+            </div>
+          </li>
+          <li className="pt-3 pb-0 sm:pt-4">
+            <div className="flex items-center space-x-4">
+              <div className="text-white flex-shrink-0">
+                <p>Mov 5</p>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium text-white truncate">
+                  Jugador 1: Alfil a Bb5
+                </p>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
