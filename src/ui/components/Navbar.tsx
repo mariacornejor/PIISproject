@@ -6,6 +6,7 @@ import icon from "../../assets/images/icono.png";
 import { VscCircleLarge } from "react-icons/vsc";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import mony from "../../assets/images/money.png";
 
 type Props = {
   point?: number;
@@ -181,7 +182,6 @@ function Navbar(props: Props) {
           </span>
         </Link>
       </div>
-
       {/* Search Input */}
       <div className=" rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={25} color="white" />
@@ -198,7 +198,6 @@ function Navbar(props: Props) {
       ) : (
         ""
       )}
-
       {/* Side drawer menu */}
       <div
         className={
@@ -235,8 +234,15 @@ function Navbar(props: Props) {
           </ul>
         </nav>
       </div>
+      <a href="/tienda" className="flex">
+        <div className="ml-24">1200</div>
+        <div className="w-8 h-8 pt-1">
+          <img src={mony} alt="moni" />
+        </div>
+      </a>{" "}
       <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         {/* Botón para alternar el menú de usuario */}
+
         <button
           onClick={toggleDropdown}
           type="button"
