@@ -65,7 +65,7 @@ function GameiFrame(props: Props) {
   }
   // Llamar a la función y manejar el resultado según sea necesario
 
-  const intervalId = setInterval(getData, 10000);
+  const intervalId = setInterval(getData, 3000);
   return (
     <div
       className="py-5 lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"
@@ -77,7 +77,7 @@ function GameiFrame(props: Props) {
           {nombre}
         </span>
         <span className="text-white ml-10 font-bold font-spartan ">
-          {score}
+          Puntuacion: {score}
         </span>
       </div>
       <iframe

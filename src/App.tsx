@@ -23,15 +23,15 @@ function App() {
         <Route path="/game" element={<GamePage />} />
         <Route
           path="/game/tic-tac-toe"
-          element={<GamePage enlace="http://localhost:3002/" />}
+          element={<GamePage enlace="http://localhost:3002/" name="tic tac toe" />}
         />
         <Route
           path="/game/chess"
-          element={<GamePage enlace="http://185.236.248.96:3037/" />}
+          element={<GamePage enlace="http://185.236.248.96:3037/" name="Ajedrez" />}
         />
         <Route
           path="/game/snow-fight"
-          element={<GamePage enlace="http://185.236.248.96:5000/" />}
+          element={<GamePage enlace="http://185.236.248.96:5000/" name="Snow Figth" />}
         />
         <Route path="/profile" element={<Profile />} />
         <Route path="/news" element={<Noticias />} />

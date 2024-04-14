@@ -10,12 +10,14 @@ import banner from "../../assets/images/banner.png";
 
 type Props = {
   enlace?: string;
+  name?:string;
 };
 
 function GamePage(props: Props) {
   const enlace =
     props.enlace !== undefined ? props.enlace : "http://185.236.248.96:3000/";
-
+  const name =
+    props.name !== undefined ? props.name : "Nombre del Juego";
   return (
     <div className="bg-background">
       <Navbar />
@@ -24,7 +26,7 @@ function GamePage(props: Props) {
       <section className=" body-font relative">
         {/*<Secondbar />*/}
         <div className="container px-5 py-16 mx-auto flex sm:flex-nowrap flex-wrap">
-          <GameiFrame enlace={enlace} />
+          <GameiFrame enlace={enlace} nombre={name}/>
           <div className="lg:w-1/3 md:w-1/2 flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
             <div className="max-w-2xl mx-auto">
               <div className="bg-leaderboard p-4 max-w-md rounded-lg border shadow-md sm:p-8 ">

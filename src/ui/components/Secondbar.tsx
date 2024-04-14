@@ -7,6 +7,7 @@ function Secondbar() {
           <a href="/mejorValorados">Mejor Valorados</a>
           <a href="/news">Noticias</a>
           <a href="/foros">Comunidad</a>
+          <a href="/torneos">Torneos</a>
         </div>
       </div>
     </nav>

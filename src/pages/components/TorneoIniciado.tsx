@@ -110,7 +110,7 @@ function TorneoIniciado() {
                 <span className="text-white"></span>
               </div>
               <span className="flex justify-center font-bold text-lg pt-10 underline underline-offset-1">
-                Final
+                <a href="torneo-finalizado">Final</a>
               </span>
             </div>
           </div>
