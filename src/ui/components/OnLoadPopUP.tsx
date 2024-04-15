@@ -23,7 +23,7 @@ function OnLoadPopUP(Props: props_popup) {
       {Props.isOpen && (
         <div
           id="toast-interactive"
-          className="mt-3 w-full max-w-xs p-4 text-gray-500 bg-gold rounded-lg shadow dark:bg-gray-800 dark:text-gray-400 absolute top-0 right-0"
+          className=" w-full max-w-xs p-4 text-gray-500 bg-gold rounded-lg shadow dark:bg-gray-800 dark:text-gray-400 absolute top-0 right-0"
           role="alert"
         >
           <div className="flex">
