@@ -1,5 +1,6 @@
 import { BsArrowsFullscreen } from "react-icons/bs";
 import React from "react";
+import { useState, useEffect } from "react";
 
 type Props = {
   enlace?: string;
@@ -64,8 +65,9 @@ function GameiFrame(props: Props) {
     }
   }
   // Llamar a la función y manejar el resultado según sea necesario
-
-  const intervalId = setInterval(getData, 3000);
+  useEffect(() => {
+    const intervalId = setInterval(getData, 3000);
+  }, []);
   return (
     <div
       className="py-5 lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative"
