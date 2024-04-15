@@ -27,7 +27,7 @@ function OnLoadPopUP(Props: props_popup) {
           role="alert"
         >
           <div className="flex">
-            <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg dark:text-blue-300 dark:bg-blue-900">
+            <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-blue-500 bg-blue-100 rounded-lg ">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -56,7 +56,7 @@ function OnLoadPopUP(Props: props_popup) {
                 <div>
                   <button
                     onClick={() => Props.setIsOpen(false)}
-                    className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+                    className="inline-flex justify-center w-full px-2 py-1.5 text-xs font-medium text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 "
                   >
                     Más tarde
                   </button>
@@ -74,7 +74,7 @@ function OnLoadPopUP(Props: props_popup) {
             </div>
             <button
               type="button"
-              className="ms-auto -mx-1.5 -my-1.5 items-center justify-center flex-shrink-0 text-black hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="ms-auto -mx-1.5 -my-1.5 items-center justify-center flex-shrink-0 text-black hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex h-8 w-8"
               data-dismiss-target="#toast-interactive"
               aria-label="Close"
             >
