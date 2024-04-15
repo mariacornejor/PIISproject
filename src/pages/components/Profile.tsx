@@ -105,8 +105,8 @@ function Profile(props: Props) {
       <div className="grid gap-2 mb-2 md:grid-cols-1 w-3/4 m-auto">
         {userData && (
           <>
-            {/** Parte de la imagen izquierda*/}
-            <div className="bg-leaderboard items-center relative py-5  mt-10 rounded-lg flex justify-start text-left">
+            {/** Parte del encabezado */}
+            <div className="bg-leaderboard items-center relative py-5 mt-10 rounded-lg flex justify-start text-left">
               <div className="w-36 h-36 ml-10 overflow-hidden rounded-xl border-2 relative right-0 shadow-lg">
                 <img src={fotoPerfil} alt="" className="w-full h-auto" />
               </div>
@@ -133,7 +133,7 @@ function Profile(props: Props) {
                   porcentaje={userData.pNivel}
                 />
               </div>
-              {/** Parte de la imagen derecha*/}
+              {/** Parte de la imagen derecha del encabezado*/}
               <div className="ml-auto mr-10">
                 <h3 className="text-2xl m-auto text-white  font-semibold">
                   Rango mas alto
@@ -150,7 +150,43 @@ function Profile(props: Props) {
                 </h3>
               </div>
             </div>
-
+            {/** Parte de los amigos */}
+            <div className="bg-leaderboard py-5 px-8 mt-10 rounded-lg flex flex-col">
+              <h3 className="text-2xl text-white font-semibold mb-3">Amigos</h3>
+              <div className="grid gap-4">
+                {/* Datos del primer amigo */}
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 overflow-hidden rounded-full">
+                    <img
+                      src={fotoNosferatu}
+                      alt="Foto de perfil"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">pepitogrillo</h4>
+                    <p className="text-gray-300">pepitogrillo@gmail.com</p>
+                  </div>
+                  <div className="text-white font-semibold">Nosferatus</div>
+                </div>
+                {/* Datos del segundo amigo */}
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 overflow-hidden rounded-full">
+                    <img
+                      src={fotoVampMedio}
+                      alt="Foto de perfil"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold">eldominguero</h4>
+                    <p className="text-gray-300">eldominguero@gmail.com</p>
+                  </div>
+                  <div className="text-white font-semibold">Goul</div>
+                </div>
+                {/* Agrega más amigos si es necesario */}
+              </div>
+            </div>
             {/** Parte del comentario */}
             <div className="content-center text-left">
               <h1 className="text-2xl px-12 flex max-w-50 flex-col my-4 text-white align-middle">

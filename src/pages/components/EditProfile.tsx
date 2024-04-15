@@ -106,6 +106,14 @@ function EditProfile() {
             )}
           </div>
         </div>
+            {/** Parte del historial de rango */}
+
+            {/** Parte de las estadisticas */}
+
+            {/** Parte de los marcos */}
+
+            {/** Parte de las pegatinas? para el chat? */}
+
       </div>
     </div>
   );
