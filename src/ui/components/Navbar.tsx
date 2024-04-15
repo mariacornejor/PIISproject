@@ -75,18 +75,19 @@ function Navbar(props: Props) {
       // Manejo adicional de errores si es necesario (por ejemplo, mostrar un mensaje al usuario)
     }
   }
-
-  // Llamar a la función
-  if (cookies != "") {
-    obtenerTipoDeUsuario()
-      .then((typeofuser) => {
-        console.log(typeofuser);
-        setType(typeofuser);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  useEffect(() => {
+    // Llamar a la función
+    if (cookies != "") {
+      obtenerTipoDeUsuario()
+        .then((typeofuser) => {
+          console.log(typeofuser);
+          setType(typeofuser);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, []);
 
   let contenido = null;
 
