@@ -22,7 +22,7 @@ type props_popup = {
 const BtnPopUp = (Props: props_btn ) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="px-4 py-64 bg-slate-900 grid place-content-center">
+    <div className="px-4 py-3 grid place-content-center">
       <button
         onClick={() => setIsOpen(true)}
         className="bg-gradient-to-r from-light_red to-red text-white font-medium px-4 py-2 rounded hover:opacity-90 transition-opacity"

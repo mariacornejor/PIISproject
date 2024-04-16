@@ -19,6 +19,9 @@ import fotoNosferatu from "../../assets/images/nosferatu.png";
 import { FaPen } from "react-icons/fa";
 import Comentarioitem from "../../ui/components/Comentarioitem";
 import React, { useState, useEffect } from "react";
+import BtnPopUp from "../../ui/components/BtnPopUp";
+import ListaDeUsuarios from "../../ui/components/ListaUsuarios";
+
 
 type Props = {
   point?: number;
@@ -31,12 +34,21 @@ type User = {
   pNivel: number;
 };
 
+type Amigo = {
+  fotoperfil: string;
+  username: string;
+  email: string;
+  nivel: string
+};
+
 function Profile(props: Props) {
   const cookies = document.cookie;
   const [userData, setUserData] = useState<User | null>(null);
+  const [amigos, setAmigos] = useState<Amigo[]>([]); // Lista de amigos
 
   useEffect(() => {
     obtenerUsuarioPerfil();
+    obtenerListaAmigos();
   }, []);
 
   async function obtenerUsuarioPerfil() {
@@ -62,6 +74,22 @@ function Profile(props: Props) {
     } catch (error) {
       console.error("Error:", error);
       // Manejo adicional de errores si es necesario (por ejemplo, mostrar un mensaje al usuario)
+    }
+  }
+
+  async function obtenerListaAmigos() {
+    // Lógica para obtener la lista de amigos desde el backend
+    try {
+      // Simulación de datos de amigos
+      const amigosData: Amigo[] = [
+        { fotoperfil: fotoNosferatu, username: "bel", email: "bel1@gmail.com", nivel: "Nosferatus" },
+        { fotoperfil: fotoVampMedio, username: "vic", email: "vicct@gmail.com", nivel: "Goul"  },
+        { fotoperfil: fotoAtaud, username: "aitor", email: "aitorcito@gmail.com", nivel: "Goul"  },        
+        // Agrega más amigos si es necesario
+      ];
+      setAmigos(amigosData);
+    } catch (error) {
+      console.error("Error al obtener la lista de amigos:", error);
     }
   }
 
@@ -99,6 +127,8 @@ function Profile(props: Props) {
       // Manejo adicional de errores si es necesario (por ejemplo, mostrar un mensaje al usuario)
     }
   }
+
+
   return (
     <div className="background bg-background">
       <Navbar />
@@ -150,43 +180,37 @@ function Profile(props: Props) {
                 </h3>
               </div>
             </div>
+
             {/** Parte de los amigos */}
             <div className="bg-leaderboard py-5 px-8 mt-10 rounded-lg flex flex-col">
               <h3 className="text-2xl text-white font-semibold mb-3">Amigos</h3>
               <div className="grid gap-4">
-                {/* Datos del primer amigo */}
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 overflow-hidden rounded-full">
-                    <img
-                      src={fotoNosferatu}
-                      alt="Foto de perfil"
-                      className="w-full h-full object-cover"
+                {/* Datos de amigos */}
+                {amigos.map((amigo, index) => (
+                  <div key={index} className="flex items-center gap-4 relative">
+                    <div className="w-10 h-10 overflow-hidden rounded-full">
+                      <img
+                        src={amigo.fotoperfil}
+                        alt="Foto de perfil"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <h4 className="text-white font-semibold">{amigo.username}</h4>
+                      <p className="text-gray-300">{amigo.email}</p>
+                    </div>
+                    <div className="text-white font-semibold">{amigo.nivel}</div>
+                    {/* Botón "Retar" */}
+                    <BtnPopUp
+                      nombre_boton="Retar"
+                      titulo_popup={`¡Reto Enviado a ${amigo.username}!`}
+                      descripcion_popup={`Has enviado un reto a ${amigo.username}.`}
                     />
                   </div>
-                  <div>
-                    <h4 className="text-white font-semibold">pepitogrillo</h4>
-                    <p className="text-gray-300">pepitogrillo@gmail.com</p>
-                  </div>
-                  <div className="text-white font-semibold">Nosferatus</div>
-                </div>
-                {/* Datos del segundo amigo */}
-                <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 overflow-hidden rounded-full">
-                    <img
-                      src={fotoVampMedio}
-                      alt="Foto de perfil"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">eldominguero</h4>
-                    <p className="text-gray-300">eldominguero@gmail.com</p>
-                  </div>
-                  <div className="text-white font-semibold">Goul</div>
-                </div>
-                {/* Agrega más amigos si es necesario */}
+                ))}
               </div>
             </div>
+
             {/** Parte del comentario */}
             <div className="content-center text-left">
               <h1 className="text-2xl px-12 flex max-w-50 flex-col my-4 text-white align-middle">

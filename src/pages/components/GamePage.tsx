@@ -336,7 +336,7 @@ function turnosJugadores() {
             </div>
           </li>
         </ul>
-      </div>
+      </div>    
     </div>
   );
 }
