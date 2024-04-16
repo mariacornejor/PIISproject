@@ -38,13 +38,14 @@ type Amigo = {
   fotoperfil: string;
   username: string;
   email: string;
-  nivel: string
+  nivel: string;
 };
 
 function Profile(props: Props) {
   const cookies = document.cookie;
   const [userData, setUserData] = useState<User | null>(null);
   const [amigos, setAmigos] = useState<Amigo[]>([]); // Lista de amigos
+  const [mostrarUltimoLogro, setMostrarUltimoLogro] = useState(false); // Estado para controlar la visualización del último logro
 
   useEffect(() => {
     obtenerUsuarioPerfil();
@@ -128,6 +129,13 @@ function Profile(props: Props) {
     }
   }
 
+  const handleClickVerUltimoLogro = () => {
+    setMostrarUltimoLogro(true);
+  };
+
+  const handleCloseUltimoLogro = () => {
+    setMostrarUltimoLogro(false);
+  };
 
   return (
     <div className="background bg-background">
@@ -166,7 +174,7 @@ function Profile(props: Props) {
               {/** Parte de la imagen derecha del encabezado*/}
               <div className="ml-auto mr-10">
                 <h3 className="text-2xl m-auto text-white  font-semibold">
-                  Rango mas alto
+                  Rango más alto
                 </h3>
                 <div className="w-24 mt-3 h-24 m-auto overflow-hidden rounded-xl border-2 relative right-0 shadow-lg">
                   <img
@@ -248,9 +256,47 @@ function Profile(props: Props) {
 
             {/** Parte de los logros de plataforma */}
             <div className="content-center text-left">
-              <h1 className="text-2xl px-12 flex max-w-50 flex-col my-4 text-white align-middle">
-                Logros
-              </h1>
+              <div className="flex items-center justify-between w-full">
+                <h1 className="text-2xl px-12 flex max-w-50 flex-col my-4 text-white align-middle">
+                  Logros
+                </h1>
+                <button
+                  type="submit"
+                  style={{
+                    width: '25%',
+                    padding: '1rem',
+                    backgroundColor: '#b85c5c',
+                    color: 'white',
+                    borderRadius: '7px',
+                    cursor: 'pointer',
+                    fontFamily: 'Montserrat',
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    marginTop: '1.8rem', // Reduce el margen superior para acercar el botón al título
+                    marginRight: '1rem', // Ajusta el margen derecho según tu diseño
+                    marginBottom: '2rem'
+                  }}
+                  onClick={handleClickVerUltimoLogro}
+                >
+                  VER ÚLTIMO LOGRO
+                </button>
+              </div>
+              
+              {/* Caja de diálogo para mostrar el último logro */}
+              {mostrarUltimoLogro && (
+                <div style={{  position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: '#5c1414', padding: '20px', borderRadius: '8px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)' }}>
+                  <div style={{ textAlign: 'center' }}>
+                    <h2 style={{ fontFamily: 'Montserrat', color: 'white' }}>Último logro desbloqueado:</h2>
+                    <p style={{ fontFamily: 'Montserrat', color: 'white' }}>Rey de Reyes</p>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <img src={fotoNosferatu} alt="Logro" style={{ width: '100px', height: '100px', marginBottom: '10px', marginTop: '20px', borderRadius: '70px' }} />
+                      <h2 style={{ fontFamily: 'Montserrat', color: 'white', fontWeight: 'bold'}}>Nivel actual: Nosferatu</h2>
+                      <button type="button" onClick={handleCloseUltimoLogro} style={{ fontWeight: 'bold', fontFamily: 'Montserrat', backgroundColor: '#d46a6a', color: 'white', padding: '0.5rem 1rem', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '1rem' }}>Cerrar</button>
+                    </div>              
+                  </div>
+                </div>
+              )}
+              
               <Logrositem
                 src={fotoLogro1}
                 nombre="peque peque"
@@ -274,7 +320,7 @@ function Profile(props: Props) {
               <Logrositem
                 src={fotoCompra}
                 nombre="Quien nada compra nada tiene"
-                descripcion="Has utilizado la moneda de la pagina una vez"
+                descripcion="Has utilizado la moneda de la página una vez"
               />
               <Logrositem
                 src={fotoVampiroGrande}
