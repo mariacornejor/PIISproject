@@ -235,7 +235,7 @@ function Navbar(props: Props) {
           </ul>
         </nav>
       </div>
-      <a href="/tienda" className="flex">
+      <a href="/shop" className="flex">
         <div className="ml-24">1200</div>
         <div className="w-8 h-8 pt-1">
           <img src={mony} alt="moni" />
