@@ -21,7 +21,9 @@ import Comentarioitem from "../../ui/components/Comentarioitem";
 import React, { useState, useEffect } from "react";
 import BtnPopUp from "../../ui/components/BtnPopUp";
 import ListaDeUsuarios from "../../ui/components/ListaUsuarios";
-
+import perfil1 from "../../assets/images/perro1.jpg";
+import perfil2 from "../../assets/images/perro2.jpg";
+import perfil3 from "../../assets/images/perr3.jpg";
 
 type Props = {
   point?: number;
@@ -39,6 +41,8 @@ type Amigo = {
   username: string;
   email: string;
   nivel: string;
+  rango: string;
+  fotorango: string;
 };
 
 function Profile(props: Props) {
@@ -83,9 +87,30 @@ function Profile(props: Props) {
     try {
       // Simulación de datos de amigos
       const amigosData: Amigo[] = [
-        { fotoperfil: fotoNosferatu, username: "bel", email: "bel1@gmail.com", nivel: "Nosferatus" },
-        { fotoperfil: fotoVampMedio, username: "vic", email: "vicct@gmail.com", nivel: "Goul"  },
-        { fotoperfil: fotoAtaud, username: "aitor", email: "aitorcito@gmail.com", nivel: "Goul"  },        
+        {
+          fotoperfil: perfil1,
+          username: "bel",
+          email: "bel1@gmail.com",
+          nivel: "Nivel 53",
+          rango: "Barón",
+          fotorango: fotoVampiroGrande,
+        },
+        {
+          fotoperfil: perfil2,
+          username: "vic",
+          email: "vicct@gmail.com",
+          nivel: "Nivel 32",
+          rango: "Goul",
+          fotorango: fotoVampMedio,
+        },
+        {
+          fotoperfil: perfil3,
+          username: "aitor",
+          email: "aitorcito@gmail.com",
+          nivel: "Nivel 25",
+          rango: "Goul",
+          fotorango: fotoVampMedio,
+        },
         // Agrega más amigos si es necesario
       ];
       setAmigos(amigosData);
@@ -183,39 +208,56 @@ function Profile(props: Props) {
                     className=" object-cover w-full h-full"
                   />
                 </div>
-                <h3 className="text-center text-white m-auto font-semibold mt-3">
+                <h3 className="text-center text-white m-auto font-semibold mt-3 font-mono">
                   Nosferatu
                 </h3>
               </div>
             </div>
 
             {/** Parte de los amigos */}
-            <div className="bg-leaderboard py-5 px-8 mt-10 rounded-lg flex flex-col">
-              <h3 className="text-2xl text-white font-semibold mb-3">Amigos</h3>
-              <div className="grid gap-4">
-                {/* Datos de amigos */}
-                {amigos.map((amigo, index) => (
-                  <div key={index} className="flex items-center gap-4 relative">
-                    <div className="w-10 h-10 overflow-hidden rounded-full">
-                      <img
-                        src={amigo.fotoperfil}
-                        alt="Foto de perfil"
-                        className="w-full h-full object-cover"
+            <div className="content-center text-left">
+              <h1 className="text-2xl px-12 flex max-w-50 flex-col my-4 text-white align-middle">
+                Amigos
+              </h1>
+              <div className="bg-leaderboard py-5 px-8 mt-10 rounded-lg flex flex-col">
+                <div className="grid gap-4">
+                  {/* Datos de amigos */}
+                  {amigos.map((amigo, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-4 relative content-center"
+                    >
+                      <div className="w-16 h-16 overflow-hidden rounded-full">
+                        <img
+                          src={amigo.fotoperfil}
+                          alt="Foto de perfil"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-grow">
+                        <h4 className="text-white font-semibold text-2xl">
+                          {amigo.username}
+                        </h4>
+                        {amigo.nivel}
+                        <p className="text-gray-300">{amigo.email}</p>
+                      </div>
+                      <div className="text-white font-semibold overflow-hidden rounded-md font-mono">
+                        <img
+                          src={amigo.fotorango}
+                          alt="Foto de perfil"
+                          className="w-12 h-12 object-cover"
+                        />
+                        {amigo.rango}
+                      </div>
+                      {/* Botón "Retar" */}
+                      <BtnPopUp
+                        nombre_boton="Retar"
+                        titulo_popup={`¡Reto Enviado a ${amigo.username}!`}
+                        descripcion_popup={`Has enviado un reto a ${amigo.username}.`}
                       />
                     </div>
-                    <div className="flex-grow">
-                      <h4 className="text-white font-semibold">{amigo.username}</h4>
-                      <p className="text-gray-300">{amigo.email}</p>
-                    </div>
-                    <div className="text-white font-semibold">{amigo.nivel}</div>
-                    {/* Botón "Retar" */}
-                    <BtnPopUp
-                      nombre_boton="Retar"
-                      titulo_popup={`¡Reto Enviado a ${amigo.username}!`}
-                      descripcion_popup={`Has enviado un reto a ${amigo.username}.`}
-                    />
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
 
@@ -263,40 +305,96 @@ function Profile(props: Props) {
                 <button
                   type="submit"
                   style={{
-                    width: '25%',
-                    padding: '1rem',
-                    backgroundColor: '#b85c5c',
-                    color: 'white',
-                    borderRadius: '7px',
-                    cursor: 'pointer',
-                    fontFamily: 'Montserrat',
-                    fontSize: '1rem',
-                    fontWeight: 'bold',
-                    marginTop: '1.8rem', // Reduce el margen superior para acercar el botón al título
-                    marginRight: '1rem', // Ajusta el margen derecho según tu diseño
-                    marginBottom: '2rem'
+                    width: "25%",
+                    padding: "1rem",
+                    backgroundColor: "#b85c5c",
+                    color: "white",
+                    borderRadius: "7px",
+                    cursor: "pointer",
+                    fontFamily: "Montserrat",
+                    fontSize: "1rem",
+                    fontWeight: "bold",
+                    marginTop: "1.8rem", // Reduce el margen superior para acercar el botón al título
+                    marginRight: "1rem", // Ajusta el margen derecho según tu diseño
+                    marginBottom: "2rem",
                   }}
                   onClick={handleClickVerUltimoLogro}
                 >
                   VER ÚLTIMO LOGRO
                 </button>
               </div>
-              
+
               {/* Caja de diálogo para mostrar el último logro */}
               {mostrarUltimoLogro && (
-                <div style={{  position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: '#5c1414', padding: '20px', borderRadius: '8px', boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.5)' }}>
-                  <div style={{ textAlign: 'center' }}>
-                    <h2 style={{ fontFamily: 'Montserrat', color: 'white' }}>Último logro desbloqueado:</h2>
-                    <p style={{ fontFamily: 'Montserrat', color: 'white' }}>Rey de Reyes</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                      <img src={fotoNosferatu} alt="Logro" style={{ width: '100px', height: '100px', marginBottom: '10px', marginTop: '20px', borderRadius: '70px' }} />
-                      <h2 style={{ fontFamily: 'Montserrat', color: 'white', fontWeight: 'bold'}}>Nivel actual: Nosferatu</h2>
-                      <button type="button" onClick={handleCloseUltimoLogro} style={{ fontWeight: 'bold', fontFamily: 'Montserrat', backgroundColor: '#d46a6a', color: 'white', padding: '0.5rem 1rem', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '1rem' }}>Cerrar</button>
-                    </div>              
+                <div
+                  style={{
+                    position: "fixed",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)",
+                    backgroundColor: "#5c1414",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+                  }}
+                >
+                  <div style={{ textAlign: "center" }}>
+                    <h2 style={{ fontFamily: "Montserrat", color: "white" }}>
+                      Último logro desbloqueado:
+                    </h2>
+                    <p style={{ fontFamily: "Montserrat", color: "white" }}>
+                      Rey de Reyes
+                    </p>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img
+                        className="object-cover"
+                        src={fotoNosferatu}
+                        alt="Logro"
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          marginBottom: "10px",
+                          marginTop: "20px",
+                          borderRadius: "70px",
+                        }}
+                      />
+                      <h2
+                        style={{
+                          fontFamily: "Montserrat",
+                          color: "white",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Nivel actual: Nosferatu
+                      </h2>
+                      <button
+                        type="button"
+                        onClick={handleCloseUltimoLogro}
+                        style={{
+                          fontWeight: "bold",
+                          fontFamily: "Montserrat",
+                          backgroundColor: "#d46a6a",
+                          color: "white",
+                          padding: "0.5rem 1rem",
+                          borderRadius: "5px",
+                          border: "none",
+                          cursor: "pointer",
+                          marginTop: "1rem",
+                        }}
+                      >
+                        Cerrar
+                      </button>
+                    </div>
                   </div>
                 </div>
               )}
-              
+
               <Logrositem
                 src={fotoLogro1}
                 nombre="peque peque"
