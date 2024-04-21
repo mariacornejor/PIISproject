@@ -1,4 +1,5 @@
 import Navbar from "../../ui/components/Navbar";
+import { Link } from 'react-router-dom';
 import Carruselitem from "../../ui/components/Carruselitem";
 import Carousel from "react-multi-carousel";
 import banner from "../../assets/images/banner.png";
@@ -10,6 +11,7 @@ import snow from "../../assets/images/snow-fight.png";
 import smalland from "../../assets/images/smalland.png";
 import ninja from "../../assets/images/100Ninja.png";
 import JuegosVarios from "../../ui/components/JuegosVarios";
+
 
 function Landing() {
   const responsive = {
@@ -40,7 +42,7 @@ function Landing() {
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
           Destacados
-          <a href="/InfoGamePage">InfoGame</a>
+          <Link to="/InfoGamePage" className="ml-2">InfoGame</Link>
         </span>
         <Carousel responsive={responsive}>
           <Carruselitem
