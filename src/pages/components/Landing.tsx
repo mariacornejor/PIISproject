@@ -42,7 +42,7 @@ function Landing() {
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
           Destacados
-          <Link to="/InfoGamePage" className="ml-2">InfoGame</Link>
+          <a href="/news">InfoGames</a>
         </span>
         <Carousel responsive={responsive}>
           <Carruselitem
