@@ -5,11 +5,10 @@ import parchis from "../../assets/images/parchis.png";
 import ajedrez from "../../assets/images/ajedrez.png";
 import Rating from "../../ui/components/Rating.tsx";
 import Chat from "../../ui/components/Chat.tsx";
-import Secondbar from "../../ui/components/Secondbar";
-import banner from "../../assets/images/banner.png";
 import profileImage from "../../assets/images/perroHuman.webp";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import OnLoadPopUP from "../../ui/components/OnLoadPopUP.tsx";
+import TimerComponent from "../../ui/components/Timer.tsx";
 
 type Props = {
   enlace?: string;
@@ -27,15 +26,13 @@ function GamePage(props: Props) {
   let contenido = leaderboard();
   const [isOpen, setIsOpen] = useState(false);
 
-  
-  
   if (tipo == "snow") {
     contenido = leaderboard();
   } else if (tipo == "tic") {
     useEffect(() => {
       setIsOpen(true); // Hace que el popup se muestre despus de que la pagina de tictactoe se monte
     }, []);
-  
+
     contenido = turnosJugadores();
   } else if (tipo == "Ajedrez") {
     contenido = movimientosAjedrez();
@@ -45,7 +42,12 @@ function GamePage(props: Props) {
     <div className="bg-background">
       <Navbar />
       {/*<img className="banner" src={banner} />*/}
-      <OnLoadPopUP isOpen = {isOpen} setIsOpen={setIsOpen} title_p = "NUEVO RETO" description_p="Te ha retado PacoArcas79"/>
+      <OnLoadPopUP
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        title_p="NUEVO RETO"
+        description_p="Te ha retado PacoArcas79"
+      />
 
       <section className=" body-font relative">
         {/*<Secondbar />*/}
@@ -290,6 +292,7 @@ function leaderboard() {
 function turnosJugadores() {
   return (
     <div>
+      <TimerComponent></TimerComponent>
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold leading-none text-white ">
           Turnos de Jugadores
@@ -336,7 +339,7 @@ function turnosJugadores() {
             </div>
           </li>
         </ul>
-      </div>    
+      </div>
     </div>
   );
 }
