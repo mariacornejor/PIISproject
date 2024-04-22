@@ -17,18 +17,18 @@ import Secondbar from "../../ui/components/Secondbar";
 
 function Shop() {
   const products = [
-    { id: 1, name: 'Gorra', description: 'Gorra', price: 20, image: GorraRoja },
-    { id: 2, name: 'Corona', description: 'Corona', price: 35, image: Corona },
-    { id: 3, name: 'Collar', description: 'Collar', price: 35, image: Collar },
-    { id: 4, name: 'Gafas de sol', description: 'Gafas de sol', price: 35, image: GafasSol },
-    { id: 5, name: 'Gafas', description: 'Gafas', price: 35, image: Gafas },
-    { id: 6, name: 'Bufanda', description: 'Bufanda', price: 35, image: Bufanda },
-    { id: 7, name: 'Mascota Murcielago', description: 'Mascota Murcielago', price: 20, image: MascotaMurcielago },
-    { id: 8, name: 'Gafas Ski', description: 'Gafas Ski', price: 35, image: GafasSki },
-    { id: 9, name: 'Diadema Gatito', description: 'Diadema Gatito', price: 35, image: DiademaGato },
-    { id: 10, name: 'Sombrero', description: 'Sombrero', price: 35, image: Sombrero },
-    { id: 11, name: 'Cadena de oro', description: 'Cadena de oro', price: 35, image: CadenaOro },
-    { id: 12, name: 'Flores', description: 'Flores', price: 35, image: Flores }
+    { id: 1, name: 'Gorra', description: 'Protegete del sol!', price: 20, image: GorraRoja },
+    { id: 2, name: 'Corona', description: 'Se el Rey', price: 35, image: Corona },
+    { id: 3, name: 'Collar', description: 'Lookin Fancy', price: 10, image: Collar },
+    { id: 4, name: 'Gafas de sol', description: 'Gafas de sol', price: 20, image: GafasSol },
+    { id: 5, name: 'Gafas', description: 'No te pierdas un pixel', price: 5, image: Gafas },
+    { id: 6, name: 'Bufanda', description: 'Protegete del frio', price: 50, image: Bufanda },
+    { id: 7, name: 'Mascota Murcielago', description: 'El mejor Compañero', price: 100, image: MascotaMurcielago },
+    { id: 8, name: 'Gafas Ski', description: 'Cuidado con la nieve!', price: 65, image: GafasSki },
+    { id: 9, name: 'Diadema Gatito', description: 'Miau', price: 35, image: DiademaGato },
+    { id: 10, name: 'Sombrero', description: 'El rey de los Piratas', price: 90, image: Sombrero },
+    { id: 11, name: 'Cadena de oro', description: 'Bling Bling', price: 200, image: CadenaOro },
+    { id: 12, name: 'Flores', description: 'Campestre', price: 20, image: Flores }
   ];
 
   const handleBuy = (product) => {
