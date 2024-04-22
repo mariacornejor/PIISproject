@@ -63,7 +63,7 @@ function App() {
         <Route path="/torneo-iniciado" element={<TorneoIniciado />} />
         <Route path="/torneo-finalizado" element={<TorneoFinalizado />} />
         <Route path="/EditProfile" element={<EditProfile />} />
-        {/** <Route path="/Shop" element={<Shop />} />*/}
+        <Route path="/Shop" element={<Shop />} />
       </Routes>
     </Router>
   );
