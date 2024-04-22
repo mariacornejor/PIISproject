@@ -53,23 +53,24 @@ const TimerComponent: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Control del Temporizador</h1>
-      <Timer isActive={isActive} />{" "}
+    <div className="mb-6">
+      <h1 className="text-center">Tiempo Restante</h1>
+      <Timer isActive={isActive} />
+      <div className="bg-white h-px mt-3"></div>
       {/* Asegúrate de que este prop está correctamente pasado */}
     </div>
   );
 };
 
 const Timer: React.FC<TimerProps> = ({ isActive }) => {
-  const [seconds, setSeconds] = useState<number>(0);
+  const [seconds, setSeconds] = useState<number>(64);
 
   useEffect(() => {
     let interval: number | null = null;
 
     if (isActive) {
       interval = window.setInterval(() => {
-        setSeconds((seconds) => seconds + 1);
+        setSeconds((seconds) => seconds - 1);
       }, 1000);
     } else if (!isActive && seconds !== 0) {
       if (interval !== null) clearInterval(interval);
