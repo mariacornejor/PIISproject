@@ -149,6 +149,7 @@ function GamePage(props: Props) {
                 <Rating />
               </div>
               <p>Fecha de lanzamiento: 19/09/2018</p>
+              <a href="/InfoGamePage">Más información</a>
             </div>
           </div>
         </div>

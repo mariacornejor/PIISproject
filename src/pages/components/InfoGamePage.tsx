@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from "../../ui/components/Navbar";
 import Rating from "../../ui/components/Rating.tsx";
-import juegoImage from "../../assets/images/tic-tac-toe.jpg";
+import juegoImage from "../../assets/images/tictactoeimagenfinal.jpg";
 import damas from "../../assets/images/damas.png";
 import parchis from "../../assets/images/parchis.png";
 import ajedrez from "../../assets/images/ajedrez.png";
 import OnLoadPopUP from "../../ui/components/OnLoadPopUP";
+import BtnPopUp from '../../ui/components/BtnPopUp.tsx';
 
 function InfoGamePage() {
   const [selectedPlayer, setSelectedPlayer] = useState(null);
@@ -14,13 +15,13 @@ function InfoGamePage() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 2000); // This will trigger the challenge popup after 2 seconds
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
-  const juegoExplicacion = `TicTacToe, o 'Tres en raya', es un juego clásico y simple donde dos jugadores alternan marcando espacios en una grilla de 3x3 con sus símbolos respectivos (X y O). El objetivo es formar una línea de tres símbolos consecutivos vertical, horizontal o diagonalmente. Fecha de lanzamiento: 19/09/2018. Ideal para desarrollar habilidades de pensamiento estratégico y previsión. Aunque las reglas son simples, las tácticas para ganar pueden ser complejas.`;
+  const juegoExplicacion = `TicTacToe es una reinterpretación del clásico juego de estrategia, donde dos jugadores compiten en una grilla de 3x3. A diferencia de la versión tradicional que utiliza las marcas 'X' y 'O', esta versión moderna permite a los jugadores utilizar las iniciales de sus nombres como fichas, introduciendo un elemento personal y distintivo al juego. Cada jugador, en su turno, coloca una ficha en los cuadros vacíos de la grilla, con el objetivo de alinear tres de sus símbolos consecutivamente —vertical, horizontal o diagonalmente— mientras bloquea los intentos del oponente de hacer lo mismo. Lanzado el 19 de septiembre de 2018, el juego no solo busca entretener, sino también fomentar el desarrollo de habilidades cruciales como el pensamiento estratégico y la anticipación. Las reglas son fáciles de entender, lo que lo hace accesible para nuevos jugadores, pero las tácticas para dominar el juego pueden ser complejas, proporcionando un desafío constante para aquellos que buscan profundizar en sus estrategias.`;
 
-  const youtubeVideoId = 'ndenXpxSA9A';
+  const youtubeVideoId = 'uq-Ns1J1BPg'; 
   const videoUrl = `https://www.youtube.com/embed/${youtubeVideoId}?rel=0`;
 
   const handlePlayerClick = (player) => {
@@ -50,9 +51,7 @@ function InfoGamePage() {
             </div>
             <span className="text-lg">{player.score}</span>
             {selectedPlayer?.name === player.name && (
-              <button onClick={handleChallengeClick} className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Retar
-              </button>
+               <BtnPopUp nombre_boton="Retar" titulo_popup="Reto confirmado" descripcion_popup={`Acabas de retar a ${player.name}`} />
             )}
           </li>
         ))}
@@ -65,7 +64,10 @@ function InfoGamePage() {
       <Navbar />
       <OnLoadPopUP isOpen={isOpen} setIsOpen={setIsOpen} title_p="NUEVO RETO" description_p="Te ha retado PacoArcas79"/>
       <div className="container mx-auto px-5 py-24 flex justify-between items-center">
-        <img className="rounded-lg" alt="Game" src={juegoImage} style={{ width: '70%', height: 'auto' }} />
+        <div style={{ width: '70%', position: 'relative', textAlign: 'center', paddingTop: '60px' }}>
+          <h1 style={{ position: 'absolute', top: '-30px', left: '50%', transform: 'translateX(-50%)', color: 'white', fontSize: '2rem', fontWeight: 'bold', zIndex: 10 }}>Tic-Tac-Toe</h1>
+          <img className="rounded-lg" alt="Game" src={juegoImage} />
+        </div>
         {leaderboard()}
       </div>
       <div className="container mx-auto px-5 py-12 flex justify-between">

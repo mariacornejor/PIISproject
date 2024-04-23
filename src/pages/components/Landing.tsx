@@ -42,7 +42,6 @@ function Landing() {
       <div className="carrusel">
         <span className="ml-14 pt-10 text-white font-bold underline">
           Destacados
-          <a href="/InfoGamePage">InfoGamePage</a>
         </span>
         <Carousel responsive={responsive}>
           <Carruselitem
