@@ -66,17 +66,29 @@ const Timer: React.FC<TimerProps> = ({ isActive }) => {
   const [seconds, setSeconds] = useState<number>(64);
 
   useEffect(() => {
-    let interval: number | null = null;
+    let interval: number | undefined;
 
     if (isActive) {
       interval = window.setInterval(() => {
-        setSeconds((seconds) => seconds - 1);
+        setSeconds((seconds) => {
+          // Verificar si el contador llegó a cero para detener el intervalo
+          if (seconds <= 1) {
+            clearInterval(interval);
+            return 0; // Asegura que el contador no vaya a números negativos
+          }
+          return seconds - 1;
+        });
       }, 1000);
-    } else if (!isActive && seconds !== 0) {
-      if (interval !== null) clearInterval(interval);
+    } else {
+      if (interval !== undefined) {
+        clearInterval(interval);
+      }
     }
+
     return () => {
-      if (interval !== null) clearInterval(interval);
+      if (interval !== undefined) {
+        clearInterval(interval);
+      }
     };
   }, [isActive]);
 
