@@ -15,6 +15,7 @@ import TorneoIniciado from "./pages/components/TorneoIniciado";
 import TorneoFinalizado from "./pages/components/TorneoFinalizado";
 import EditProfile from "./pages/components/EditProfile";
 import Shop from "./pages/components/Shop";
+import InfoGamePage from "./pages/components/InfoGamePage";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
         <Route path="/torneo-finalizado" element={<TorneoFinalizado />} />
         <Route path="/EditProfile" element={<EditProfile />} />
         <Route path="/Shop" element={<Shop />} />
+        <Route path="/InfoGamePage" element={<InfoGamePage />} />
       </Routes>
     </Router>
   );
