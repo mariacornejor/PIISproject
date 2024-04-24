@@ -203,8 +203,8 @@ function Navbar(props: Props) {
       <div
         className={
           nav
-            ? "fixed top-0 left-0 w-[300px] h-screen bg-background z-10 duration-300"
-            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-background z-10 duration-300"
+            ? "fixed top-0 left-0 w-[300px] h-screen bg-background z-10 duration-300 overflow-auto"
+            : "fixed top-0 left-[-100%] w-[300px] h-screen bg-background z-10 duration-300 overflow-auto"
         }
       >
         <AiOutlineClose
